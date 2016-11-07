@@ -11,7 +11,8 @@ class CoachesController < ApplicationController
 
   def create
     @coach = Coach.new(coach_params)
-
+    puts "saving a coach"
+    puts @coach.inspect
     if @coach.save
       flash[:notice] = "Thanks for joining!"
       session[:coach_id] = @coach.id
@@ -30,7 +31,9 @@ class CoachesController < ApplicationController
       :team,
       :age_group,
       :email,
-      :phone
+      :phone,
+      :password,
+      :password_confirmation
     )
   end
 

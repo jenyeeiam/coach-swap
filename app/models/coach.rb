@@ -1,5 +1,5 @@
 class Coach < ApplicationRecord
-
+  mount_uploader :avatar, AvatarUploader
   has_secure_password
   has_many :practices
 
@@ -19,5 +19,12 @@ class Coach < ApplicationRecord
       nil
     end
   end
+
+  # User Avatar Validation
+
+  private
+    def avatar_size_validation
+      errors[:avatar] << "should be less than 500KB" if avatar.size > 0.5.megabytes
+    end
 
 end

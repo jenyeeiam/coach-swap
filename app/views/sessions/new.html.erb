@@ -5,14 +5,13 @@
   <div class="column is-one-third"></div>
     <div class="column is-one-third">
       <div class="box">
-        <h1>Login</h1>
         <p class="control has-icon">
           <%= text_field_tag(:email, "", :class => "input is-medium", :type => "email", :placeholder => "Email") %>
-          <i class="fa fa-envelope"></i>
+          <i class="fa fa-envelope" aria-hidden="true"></i>
         </p>
         <p class="control has-icon">
           <%= password_field_tag(:password, "", :class => "input is-medium", :type => "password", :placeholder => "Password")%>
-          <i class="fa fa-lock"></i>
+          <i class="fa fa-lock" aria-hidden="true"></i>
         </p>
         <p class="control">
           <button class="button is-medium is-success">

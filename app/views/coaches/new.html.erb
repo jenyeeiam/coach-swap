@@ -1,0 +1,42 @@
+
+<div class="columns">
+  <div class="column is-one-third"></div>
+  <div class="column is-one-third">
+    <h1 class="title is-2">Create a Profile</h1>
+    </br>
+    <%= form_for @coach do |f| %>
+
+      <p class="control has-icon">
+        <%= f.text_field :name, :class => "input is-medium", :type => "text", :placeholder => "Name" %>
+        <i class="fa fa-user" aria-hidden="true"></i>
+      </p>
+      <p class="control has-icon">
+        <%= f.text_field :team, :class => "input is-medium", :type => "text", :placeholder => "Team Name" %>
+        <i class="fa fa-users" aria-hidden="true"></i>
+      </p>
+      <p class="control">
+        <span class="select is-medium">
+          <%= f.select(:age_group, ["U18", "U16", "U14", "U12"]) %>
+        </span>
+      </p>
+      <p class="control has-icon">
+        <%= f.text_field :email, :class => "input is-medium", :type => "email", :placeholder => "example@email.com" %>
+        <i class="fa fa-users" aria-hidden="true"></i>
+      </p>
+      <p class="control has-icon">
+        <%= f.text_field :phone, :class => "input is-medium", :type => "text", :placeholder => "555-555-5555" %>
+        <i class="fa fa-users" aria-hidden="true"></i>
+      </p>
+      <p class="control has-icon">
+        <%= f.password_field(:password, :class => "input is-medium", :type => "password", :placeholder => "Password")%>
+        <i class="fa fa-lock" aria-hidden="true"></i>
+      </p>
+      <p class="control has-icon">
+        <%= f.password_field(:password_confirmation, :class => "input is-medium", :type => "password", :placeholder => "Password Confirmation")%>
+        <i class="fa fa-lock" aria-hidden="true"></i>
+      </p>
+      <%= f.submit("Signup", :class => "button is-medium") %>
+    <% end %>
+  </div>
+  <div class="column is-one-third"></div>
+</div>
