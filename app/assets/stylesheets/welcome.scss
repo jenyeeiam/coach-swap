@@ -1,3 +1,49 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hero {
+  background: url('http://i.imgur.com/XHY685T.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.hero-head {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.main-welcome {
+  margin-right: 30px;
+}
+
+.coach-title {
+  color: #99c0ff;
+  font-size: 2em;
+}
+
+.swap-title {
+  color: white;
+  font-size: 2em;
+}
+
+.tagline {
+  color: black;
+}
+
+.grow a,p,p.title {
+  color: #656F7D;
+}
+
+.grow:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  background-color: #B1B5BA;
+
+  p {
+    color: white;
+  }
+}

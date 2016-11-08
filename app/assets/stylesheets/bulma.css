@@ -5621,6 +5621,7 @@ a.panel-block:hover {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   padding: 40px 20px;
+  
 }
 
 @media screen and (min-width: 1240px) {

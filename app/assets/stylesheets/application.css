@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  */
-@import "coaches";
 @import "bulma";
+@import "coaches";
+@import "welcome";
 
 /*body {
   font-family: 'Droid Sans', sans-serif;

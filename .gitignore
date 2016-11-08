@@ -22,3 +22,6 @@
 
 # Ignore client secret
 ./client_secret.json
+
+# Ignore application configuration
+/config/application.yml

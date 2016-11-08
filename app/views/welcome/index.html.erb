@@ -1,23 +1,25 @@
-<section class="hero is-success is-large">
+<section class="hero is-medium">
   <div class="hero-head">
-    <div class="nav-right nav-menu">
-      <span class="nav-item">
-        <a class="button is-large">Join Now</a>
-      </span>
-    </div>
+    <a class="is-pulled-right button is-danger is-large">Join Now!</a>
   </div>
 
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title is-1">
-        Coach Swap
+
+      <h1 class="main-welcome title is-1">
+        <span class="coach-title">Coach</span>
+        <span class="swap-title">Swap</span>
       </h1>
-      <h2 class="subtitle is-3">
+      <h2 class="tagline title is-3">
         Connecting the softball community one swap at a time
       </h2>
 
-      <a class="button is-medium">Login</a>
-      <a class="button is-medium">Practices near me</a>
+        <div class="block">
+          <%= link_to "Login", login_path, class: "button is-danger is-medium"%>
+          <!-- <a class="button is-danger is-medium">Login</a> -->
+        </div>
+        <a class="button is-danger is-medium">How it works</a>
+
 
     </div>
   </div>
@@ -26,19 +28,21 @@
 
   <div class="tile is-ancestor">
     <div class="tile is-4 is-parent">
-      <div class="tile is-child box">
+      <div class="grow has-text-centered tile is-child box">
+        <%= link_to new_coach_path do %>
         <p class="title">Step One</p>
         <p>Make a profile</p>
+        <% end %>
       </div>
     </div>
     <div class="tile is-4 is-parent">
-      <div class="tile is-child box">
+      <div class="grow tile is-child box">
         <p class="title">Step Two</p>
         <p>List your practice schedule for coaches in your area to watch</p>
       </div>
     </div>
     <div class="tile is-4 is-parent">
-      <div class="tile is-child box">
+      <div class="grow tile is-child box">
         <p class="title">Step Three</p>
         <p>Find practices in your area to watch. Every swap earns you points!</p>
       </div>
