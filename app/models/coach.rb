@@ -9,6 +9,13 @@ class Coach < ApplicationRecord
   validates :email, presence: true
   validates :phone, presence: true
   validates :password_digest, presence: true
+  validates_processing_of :avatar
+  validate :avatar_size_validation
+
+private
+  def image_size_validation
+    errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+  end
 
   def self.authenticate_with_credentials(email, password)
     email = email.strip.downcase

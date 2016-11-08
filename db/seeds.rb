@@ -14,7 +14,8 @@ Coach.create!({
   team: 'Team A',
   age_group: '12U',
   email: Faker::Internet.email,
-  phone: Faker::Number.number(10)
+  phone: Faker::Number.number(10),
+  password_digest: "password"
 })
 
 Coach.create!({
@@ -22,7 +23,9 @@ Coach.create!({
   team: 'Team B',
   age_group: '12U',
   email: Faker::Internet.email,
-  phone: Faker::Number.number(10)
+  phone: Faker::Number.number(10),
+  password_digest: "password"
+
 })
 
 Coach.create!({
@@ -30,7 +33,9 @@ Coach.create!({
   team: 'Team C',
   age_group: '12U',
   email: Faker::Internet.email,
-  phone: Faker::Number.number(10)
+  phone: Faker::Number.number(10),
+  password_digest: "password"
+
 })
 
 Practice.destroy_all

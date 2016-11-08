@@ -11,8 +11,6 @@ class CoachesController < ApplicationController
 
   def create
     @coach = Coach.new(coach_params)
-    puts "saving a coach"
-    puts @coach.inspect
     if @coach.save
       flash[:notice] = "Thanks for joining!"
       session[:coach_id] = @coach.id
@@ -27,6 +25,7 @@ class CoachesController < ApplicationController
   private
   def coach_params
     params.require(:coach).permit(
+      :avatar,
       :name,
       :team,
       :age_group,

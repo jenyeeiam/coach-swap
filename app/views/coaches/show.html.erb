@@ -1,7 +1,7 @@
 <%= render 'layouts/top_nav' %>
 <h1>I'm a coach</h1>
 <p><%= @coach.name %></p>
-
+<span><%= image_tag(@coach.avatar.thumb.url)%></span>
 <p>My practices</p>
 
 <ul>
