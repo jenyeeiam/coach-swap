@@ -13,6 +13,7 @@ Coach.create!({
   name: Faker::Name.name,
   team: 'Team A',
   age_group: '12U',
+  state: "Alabama",
   email: Faker::Internet.email,
   phone: Faker::Number.number(10),
   password_digest: "password"
@@ -22,6 +23,7 @@ Coach.create!({
   name: Faker::Name.name,
   team: 'Team B',
   age_group: '12U',
+  state: "Alabama",
   email: Faker::Internet.email,
   phone: Faker::Number.number(10),
   password_digest: "password"
@@ -32,6 +34,7 @@ Coach.create!({
   name: Faker::Name.name,
   team: 'Team C',
   age_group: '12U',
+  state: "Alabama",
   email: Faker::Internet.email,
   phone: Faker::Number.number(10),
   password_digest: "password"
@@ -40,25 +43,14 @@ Coach.create!({
 
 Practice.destroy_all
 
-Practice.create!({
-  coach_id: 1,
-  date: Faker::Date.forward(7),
-  guest_coach_id: 2,
-  location: Faker::Address.street_address
-})
+10.times do |i|
+  Practice.create!({
+    coach_id: 1 + rand(3),
+    date: Faker::Date.forward(7),
+    guest_coach_id: 1 + rand(3),
+    location: Faker::Address.street_address
+  })
+end
 
-Practice.create!({
-  coach_id: 2,
-  date: Faker::Date.forward(7),
-  guest_coach_id: 3,
-  location: Faker::Address.street_address
-})
-
-Practice.create!({
-  coach_id: 3,
-  date: Faker::Date.forward(7),
-  guest_coach_id: 1,
-  location: Faker::Address.street_address
-})
 
 puts "DONE!"

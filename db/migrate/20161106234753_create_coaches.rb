@@ -4,6 +4,7 @@ class CreateCoaches < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :team
       t.string :age_group
+      t.string :state
       t.string :email
       t.string :phone
       t.string :password_digest

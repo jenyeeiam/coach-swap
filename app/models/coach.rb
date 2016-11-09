@@ -6,6 +6,7 @@ class Coach < ApplicationRecord
   validates :name, presence: true
   validates :team, presence: true
   validates :age_group, presence: true
+  validates :state, presence: true
   validates :email, presence: true
   validates :phone, presence: true
   validates :password_digest, presence: true

@@ -29,6 +29,7 @@ class CoachesController < ApplicationController
       :name,
       :team,
       :age_group,
+      :state,
       :email,
       :phone,
       :password,

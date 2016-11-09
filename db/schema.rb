@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20161107174158) do
     t.string   "name"
     t.string   "team"
     t.string   "age_group"
+    t.string   "state"
     t.string   "email"
     t.string   "phone"
     t.string   "password_digest"

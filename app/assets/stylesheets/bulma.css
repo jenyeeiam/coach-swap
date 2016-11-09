@@ -4028,7 +4028,7 @@ a.nav-item.is-tab.is-active {
   position: relative;
   text-align: center;
   z-index: 2;
-  background-color: #B0E9E9;
+  background-color: #99c0ff;
   padding: 10px;
 }
 
@@ -5621,7 +5621,7 @@ a.panel-block:hover {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   padding: 40px 20px;
-  
+
 }
 
 @media screen and (min-width: 1240px) {

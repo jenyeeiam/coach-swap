@@ -1,14 +1,15 @@
 <nav class="nav">
   <div class="nav-left">
     <a class="nav-item is-brand">
-      <p class="title is-1">Coach Swap</p>
+      <%= link_to "Coach Swap", root_path, :class => "title is-1" %>
     </a>
   </div>
 
   <div class="nav-right nav-menu">
-    <a class="nav-item" href="#">
+    <%= link_to 'Logout', '/logout', :class => "nav-item" %>
+    <!-- <a class="nav-item" href="#">
       Logout
-    </a>
+    </a> -->
     <a class="nav-item" href="#">
       My Practice Schedule
     </a>

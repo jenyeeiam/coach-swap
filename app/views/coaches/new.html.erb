@@ -19,6 +19,11 @@
           <%= f.select(:age_group, ["U18", "U16", "U14", "U12"]) %>
         </span>
       </p>
+      <p class="control">
+        <span class="select is-medium">
+          <%= f.select(:state, ["Alabama", "Alaska", "Arizona"]) %>
+        </span>
+      </p>
       <p class="control has-icon">
         <%= f.text_field :email, :class => "input is-medium", :type => "email", :placeholder => "example@email.com" %>
         <i class="fa fa-users" aria-hidden="true"></i>
@@ -35,7 +40,7 @@
         <%= f.password_field(:password_confirmation, :class => "input is-medium", :type => "password", :placeholder => "Password Confirmation")%>
         <i class="fa fa-lock" aria-hidden="true"></i>
       </p>
-      <%= f.submit("Signup", :class => "button is-medium") %>
+      <%= f.submit("Signup", :class => "button is-success is-medium") %>
     <% end %>
   </div>
   <div class="column is-one-third"></div>

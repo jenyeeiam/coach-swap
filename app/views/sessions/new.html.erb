@@ -5,6 +5,7 @@
   <div class="column is-one-third"></div>
     <div class="column is-one-third">
       <div class="box">
+        <%= form_tag :login do %>
         <p class="control has-icon">
           <%= text_field_tag(:email, "", :class => "input is-medium", :type => "email", :placeholder => "Email") %>
           <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -14,10 +15,9 @@
           <i class="fa fa-lock" aria-hidden="true"></i>
         </p>
         <p class="control">
-          <button class="button is-medium is-success">
-            Login
-          </button>
+          <%= submit_tag "Login", :class => "button is-medium is-success" %>
         </p>
+        <% end %>
       </div>
     </div>
   <div class="column is-one-third"></div>
