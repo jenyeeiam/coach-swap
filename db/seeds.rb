@@ -52,5 +52,29 @@ Practice.destroy_all
   })
 end
 
+Day.destroy_all
+
+Day.create!({
+  day: "Monday"
+})
+Day.create!({
+  day: "Tuesday"
+})
+Day.create!({
+  day: "Wednesday"
+})
+Day.create!({
+  day: "Thursday"
+})
+Day.create!({
+  day: "Friday"
+})
+Day.create!({
+  day: "Saturday"
+})
+Day.create!({
+  day: "Sunday"
+})
+
 
 puts "DONE!"

@@ -5,6 +5,18 @@
     <h1 class="title is-2">Create a Profile</h1>
     </br>
     <%= form_for @coach do |f| %>
+
+      <% if f.object.errors.any? %>
+        <div class="alert alert-danger">
+          <strong>The following errors prevented saving:</strong>
+          <ul>
+            <% f.object.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <%= f.file_field(:avatar) %>
       <p class="control has-icon">
         <%= f.text_field :name, :class => "input is-medium", :type => "text", :placeholder => "Name" %>
@@ -21,7 +33,7 @@
       </p>
       <p class="control">
         <span class="select is-medium">
-          <%= f.select(:state, ["Alabama", "Alaska", "Arizona"]) %>
+          <%= f.select(:state, ["Colorado"]) %>
         </span>
       </p>
       <p class="control has-icon">

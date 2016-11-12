@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  get '/how-it-works', to: 'welcome#show'
 
   resources :coaches
   resources :practices
@@ -12,4 +13,8 @@ Rails.application.routes.draw do
   resources :coaches do
     resources :practices
   end
+
+  # namespace :coaches do
+  #   resources :practices
+  # end
 end

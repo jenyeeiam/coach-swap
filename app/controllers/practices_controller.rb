@@ -8,9 +8,17 @@ class PracticesController < ApplicationController
   def index
     @practices = Practice.all
     @current_user = current_user
-    puts "current"
-    puts @current_user.inspect
     @coach_1 = Coach.find(1)
+    @schedule = IceCube::Schedule.new(Time.now, :end_time => Time.now + 30*86400) do |s|
+      s.add_recurrence_rule IceCube::Rule.daily
+    end
+
+    @event = EventRecurrence.where(coach_id: 1)
+  end
+
+  def new
+    @coach = Coach.find(params[:coach_id])
+    @practice = @coach.practices.new
   end
 
   def create
