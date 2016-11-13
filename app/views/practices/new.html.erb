@@ -6,142 +6,27 @@
     </br>
     <h1 class="title is-2">My Practice Schedule</h1>
     </br>
-
-    <%= form_for [@coach, @practice] do |f| %>
-
-      <% if f.object.errors.any? %>
-        <div class="alert alert-danger">
-          <strong>The following errors prevented saving:</strong>
-          <ul>
-            <% f.object.errors.full_messages.each do |error| %>
-              <li><%= error %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>Time</th>
-            <th>Location</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <%= check_box_tag(@practice, :date) %>
-              <%= label_tag(:monday, "Monday") %>
-            </td>
-            <td>
-              <%= time_field(@practice, :time, :class => "input is-medium") %>
-            </td>
-            <td>
-              <%= f.text_field :location, :class => "input is-medium", :type => "text", :placeholder => "Address" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= check_box_tag(:monday) %>
-              <%= label_tag(:monday, "Tuesday") %>
-            </td>
-            <td>
-              <%= time_field(:monday, :time, :class => "input is-medium") %>
-            </td>
-            <td>
-              <%= f.text_field :location, :class => "input is-medium", :type => "text", :placeholder => "Address" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= check_box_tag(:monday) %>
-              <%= label_tag(:monday, "Wednesday") %>
-            </td>
-            <td>
-              <%= time_field(:monday, :time, :class => "input is-medium") %>
-            </td>
-            <td>
-              <%= f.text_field :location, :class => "input is-medium", :type => "text", :placeholder => "Address" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= check_box_tag(:monday) %>
-              <%= label_tag(:monday, "Thursday") %>
-            </td>
-            <td>
-              <%= time_field(:monday, :time, :class => "input is-medium") %>
-            </td>
-            <td>
-              <%= f.text_field :location, :class => "input is-medium", :type => "text", :placeholder => "Address" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= check_box_tag(:monday) %>
-              <%= label_tag(:monday, "Friday") %>
-            </td>
-            <td>
-              <%= time_field(:monday, :time, :class => "input is-medium") %>
-            </td>
-            <td>
-              <%= f.text_field :location, :class => "input is-medium", :type => "text", :placeholder => "Address" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= check_box_tag(:monday) %>
-              <%= label_tag(:monday, "Saturday") %>
-            </td>
-            <td>
-              <%= time_field(:monday, :time, :class => "input is-medium") %>
-            </td>
-            <td>
-              <%= f.text_field :location, :class => "input is-medium", :type => "text", :placeholder => "Address" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= check_box_tag(:msonday) %>
-              <%= label_tag(:monday, "Sunday") %>
-            </td>
-            <td>
-              <%= time_field(:monday, :time, :class => "input is-medium") %>
-            </td>
-            <td>
-              <%= f.text_field :location, :class => "input is-medium", :type => "text", :placeholder => "Address" %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p class="control">
-        <%= check_box_tag(:monday) %>
-        <%= label_tag(:monday, "Monday") %>
-        <%= check_box_tag(:monday) %>
-        <%= label_tag(:monday, "Tuesday") %>
-        <%= check_box_tag(:monday) %>
-        <%= label_tag(:monday, "Wednesday") %>
-        <%= check_box_tag(:monday) %>
-        <%= label_tag(:monday, "Thursday") %>
-        <%= check_box_tag(:monday) %>
-        <%= label_tag(:monday, "Friday") %>
-        <%= check_box_tag(:monday) %>
-        <%= label_tag(:monday, "Saturday") %>
-        <%= check_box_tag(:monday) %>
-        <%= label_tag(:monday, "Sunday") %>
-      </p>
-
-      <p class="control">
-        <%= f.text_field :location, :class => "input is-medium", :type => "text", :placeholder => "Address" %>
-      </p>
-
-      <p class="practice-date control has-icon">
-        <%= f.text_field :date, 'data-behaviour' => 'datepicker', :class => "input is-medium", :id => "datepicker" %>
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-      </p>
-
-    <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Duration</th>
+          <th>Location</th>
+          <th>Reoccuring</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= form_tag practices_path do %>
+          <% @practices.each_with_index do |practice, index| %>
+          <%= render 'practice_form', index: index %>
+          <% end %>
+          <%= submit_tag "Submit" %>
+          <% end %>
+      </tbody>
+      <tfoot>
+        <button class="add-practice">Add Practice</button>
+      </tfoot>
+    </table>
   </div>
-  <div class="column is-3"></div>
 </div>

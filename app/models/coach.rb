@@ -2,6 +2,7 @@ class Coach < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_secure_password
   has_many :practices
+  has_many :event_recurrences
 
   validates :name, presence: true
   validates :team, presence: true

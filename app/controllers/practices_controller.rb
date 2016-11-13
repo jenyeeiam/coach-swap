@@ -6,32 +6,38 @@ class PracticesController < ApplicationController
   end
 
   def index
-    @practices = Practice.all
-    @current_user = current_user
-    @coach_1 = Coach.find(1)
-    @schedule = IceCube::Schedule.new(Time.now, :end_time => Time.now + 30*86400) do |s|
-      s.add_recurrence_rule IceCube::Rule.daily
-    end
 
-    @event = EventRecurrence.where(coach_id: 1)
   end
 
   def new
     @coach = Coach.find(params[:coach_id])
     @practice = @coach.practices.new
+
+    # @coach = Coach.find(1)
+
+    @practices = []
+    7.times do
+      @practices << Coach.find(params[:coach_id]).practices.new
+    end
+
   end
 
   def create
-    @coach = Coach.find(params[:coach_id])
-    @practice = @coach.practices.new(practice_params)
+    byebug
+    # params["practices"].each do |practice|
+    #   @coach = Coach.find(1)
+    #   byebug
+    #   if practice["day_of_week"] != ''
+    #     @coach.practices.create(practice_params(practice))
+    #   end
+    # end
+    #
+    # def practice_params(my_params)
+    #   my_params.permit(:day_of_week, :time, :location)
+    # end
+
+
   end
 
-  private
-    def practice_params
-      params.require(:practice).permit(
-        :location,
-        :time
-      )
-    end
 
 end

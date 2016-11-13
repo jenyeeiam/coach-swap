@@ -46,35 +46,22 @@ Practice.destroy_all
 10.times do |i|
   Practice.create!({
     coach_id: 1 + rand(3),
-    date: Faker::Date.forward(7),
+    day_of_week: Faker::Date.forward(7).strftime('%A'),
+    time: '8:00pm',
+    duration: '2 hours',
     guest_coach_id: 1 + rand(3),
     location: Faker::Address.street_address
   })
 end
 
-Day.destroy_all
+EventRecurrence.destroy_all
 
-Day.create!({
-  day: "Monday"
+EventRecurrence.create!({
+  coach_id: 1,
+  start_date: Time.now,
+  end_date: 6.months.from_now,
+  every: 'week',
+  on: 'monday'
 })
-Day.create!({
-  day: "Tuesday"
-})
-Day.create!({
-  day: "Wednesday"
-})
-Day.create!({
-  day: "Thursday"
-})
-Day.create!({
-  day: "Friday"
-})
-Day.create!({
-  day: "Saturday"
-})
-Day.create!({
-  day: "Sunday"
-})
-
 
 puts "DONE!"

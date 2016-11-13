@@ -5,7 +5,7 @@ class CreateEventRecurrences < ActiveRecord::Migration[5.0]
       t.datetime :end_date
       t.string :every
       t.string :on
-      t.integer :coach_id
+      t.references :coach, index: true, foreign_key: true
       t.timestamps
     end
   end

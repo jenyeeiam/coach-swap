@@ -1,4 +1,6 @@
 class EventRecurrence < ApplicationRecord
+  belongs_to :coach
+
   # def dates(options={})
   #   options = {:every => every, :starts => start_date, :until => end_date}.merge(options)
   #   options[:on] = case options[:every]
@@ -17,4 +19,5 @@ class EventRecurrence < ApplicationRecord
     options[:starts].strftime('%A').downcase.to_sym
     Recurrence.new(options).events
   end
+
 end

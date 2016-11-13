@@ -1,0 +1,17 @@
+<tr class="practice-form">
+  <td>
+    <%= select_tag("practices[][day_of_week]", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])) %>
+  </td>
+  <td>
+    <%= text_field_tag("practices[][time]") %>
+  </td>
+  <td>
+    <%= text_field_tag("practices[][duration]") %>
+  </td>
+  <td>
+    <%= text_field_tag("practices[][location]") %>
+  </td>
+  <td>
+    <%= select_tag("practices[][reoccuring]", options_for_select(["Yes", "No"]))%>
+  </td>
+</tr>

@@ -28,17 +28,6 @@ ActiveRecord::Schema.define(version: 20161112034501) do
     t.string   "avatar"
   end
 
-  create_table "days", force: :cascade do |t|
-    t.string "day"
-  end
-
-  create_table "days_practices", id: false, force: :cascade do |t|
-    t.integer "practice_id", null: false
-    t.integer "day_id",      null: false
-    t.index ["day_id", "practice_id"], name: "index_days_practices_on_day_id_and_practice_id", using: :btree
-    t.index ["practice_id", "day_id"], name: "index_days_practices_on_practice_id_and_day_id", using: :btree
-  end
-
   create_table "event_recurrences", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -47,11 +36,13 @@ ActiveRecord::Schema.define(version: 20161112034501) do
     t.integer  "coach_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["coach_id"], name: "index_event_recurrences_on_coach_id", using: :btree
   end
 
   create_table "practices", force: :cascade do |t|
     t.integer  "coach_id"
-    t.datetime "date"
+    t.string   "day_of_week"
+    t.string   "time"
     t.string   "duration"
     t.integer  "guest_coach_id"
     t.string   "location"
@@ -60,5 +51,6 @@ ActiveRecord::Schema.define(version: 20161112034501) do
     t.index ["coach_id"], name: "index_practices_on_coach_id", using: :btree
   end
 
+  add_foreign_key "event_recurrences", "coaches"
   add_foreign_key "practices", "coaches"
 end
