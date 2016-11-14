@@ -50,7 +50,10 @@ Practice.destroy_all
     time: '8:00pm',
     duration: '2 hours',
     guest_coach_id: 1 + rand(3),
-    location: Faker::Address.street_address
+    team_name: Faker::Team.name,
+    location: Faker::Address.street_address,
+    date: Date.today,
+    # end_date: Faker::Date.between(6.months.from_now, 1.year.from_now)
   })
 end
 
@@ -58,10 +61,10 @@ EventRecurrence.destroy_all
 
 EventRecurrence.create!({
   coach_id: 1,
-  start_date: Time.now,
+  # start_date: Time.now,
   end_date: 6.months.from_now,
-  every: 'week',
-  on: 'monday'
+  # every: 'week',
+  day_of_week: 'monday'
 })
 
 puts "DONE!"

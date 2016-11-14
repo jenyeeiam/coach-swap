@@ -11,9 +11,9 @@
         <tr>
           <th>Day</th>
           <th>Time</th>
-          <th>Duration</th>
+          <th>Duration (hours)</th>
           <th>Location</th>
-          <th>Reoccuring</th>
+          <th>End Date</th>
         </tr>
       </thead>
       <tbody>
@@ -21,10 +21,10 @@
           <% @practices.each_with_index do |practice, index| %>
           <%= render 'practice_form', index: index %>
           <% end %>
-          <%= submit_tag "Submit" %>
-          <% end %>
       </tbody>
       <tfoot>
+        <%= submit_tag "Submit" %>
+        <% end %>
         <button class="add-practice">Add Practice</button>
       </tfoot>
     </table>

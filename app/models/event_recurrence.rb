@@ -1,3 +1,6 @@
+require "recurrence"
+require "date"
+
 class EventRecurrence < ApplicationRecord
   belongs_to :coach
 
@@ -15,9 +18,9 @@ class EventRecurrence < ApplicationRecord
   # end
 
   def dates(options={})
-    options = {:every => 'week', :on => on, :starts => start_date, :until => end_date}.merge(options)
-    options[:starts].strftime('%A').downcase.to_sym
-    Recurrence.new(options).events
+    options = {:on => day_of_week.downcase, :starts => Date.today, :until => end_date}.merge(options)
+    # options[:starts].strftime('%A').downcase.to_sym
+    Recurrence.weekly(options).events
   end
 
 end

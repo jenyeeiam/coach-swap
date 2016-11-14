@@ -16,3 +16,19 @@
 .practice-form {
   visibility: hidden;
 }
+
+.end-date {
+  display: none;
+}
+
+.practice-entry {
+  border: 1px solid black;
+  .practice-time {
+    margin-right: 15px;
+  }
+}
+
+.practice-entry:hover {
+  cursor: pointer;
+  cursor: hand;
+}

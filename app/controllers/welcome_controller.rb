@@ -26,8 +26,6 @@ class WelcomeController < ApplicationController
     # end
 
     @events = EventRecurrence.where(coach_id: 1)
-
-    byebug
   end
 
 end

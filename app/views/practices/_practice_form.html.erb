@@ -12,6 +12,9 @@
     <%= text_field_tag("practices[][location]") %>
   </td>
   <td>
-    <%= select_tag("practices[][reoccuring]", options_for_select(["Yes", "No"]))%>
+    <!-- <p class="recurring">Reoccuring?</p> -->
+    <%= date_field_tag("practices[][end_date]") %>
   </td>
+
+
 </tr>

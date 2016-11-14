@@ -6,4 +6,9 @@ $(document).ready(function() {
     $current = $current.next();
     $current.css("visibility", "visible");
   })
+
+  $('.recurring').click(function(){
+    $('.end-date').toggle()
+  })
+
 })

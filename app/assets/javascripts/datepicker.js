@@ -1,10 +1,7 @@
 
 $(document).ready(function() {
-  $('#datepicker').datepicker({
-    multidate: true,
-    clearBtn: true,
+  $('.datepicker').datepicker({
     todayHighlight: true,
   });
 
-  $('#datepicker').focus()
 });

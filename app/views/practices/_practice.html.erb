@@ -1,0 +1,14 @@
+<% if practice.date.strftime('%m/%d/%Y') == date.strftime('%m/%d/%Y') %>
+    <li class="practice-entry">
+      <div class="practice-time is-inline-flex">
+        <%= practice.time %>
+      </div>
+      <div class="is-inline-flex">
+        <strong><%= practice.team_name %></strong>
+      </div>
+      <div class="block">
+        <%= practice.location %>
+      </div>
+
+    </li>
+<% end %>

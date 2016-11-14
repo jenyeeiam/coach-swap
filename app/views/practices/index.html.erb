@@ -1,0 +1,118 @@
+<%= render 'layouts/top_nav' %>
+
+<div class="columns">
+  <div class="column is-two-thirds">
+    <article class="message">
+      <div class="message-header has-text-centered">
+        Today
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @all_practices.each do |practice| %>
+            <%= render 'practice', practice: practice, date: Date.today %>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header has-text-centered">
+        <%= date_calculator(1.day.from_now)%>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @all_practices.each do |practice| %>
+            <%= render 'practice', practice: practice, date: 1.day.from_now %>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header has-text-centered">
+        <%= date_calculator(2.days.from_now)%>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @all_practices.each do |practice| %>
+            <%= render 'practice', practice: practice, date: 2.days.from_now %>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header has-text-centered">
+        <%= date_calculator(3.days.from_now)%>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @all_practices.each do |practice| %>
+            <%= render 'practice', practice: practice, date: (3.days.from_now) %>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header has-text-centered">
+        <%= date_calculator(4.days.from_now)%>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @all_practices.each do |practice| %>
+            <%= render 'practice', practice: practice, date: (4.days.from_now) %>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header has-text-centered">
+        <%= date_calculator(5.days.from_now)%>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @all_practices.each do |practice| %>
+            <%= render 'practice', practice: practice, date: (5.days.from_now) %>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+
+    <article class="message">
+      <div class="message-header has-text-centered">
+        <%= date_calculator(6.days.from_now)%>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @all_practices.each do |practice| %>
+            <%= render 'practice', practice: practice, date: (6.days.from_now) %>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+
+    <span class="tag is-danger practice-entry">Swap</span>
+    <div class="swap-modal modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="card">
+
+          <div class="card-content">
+            <div class="content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Phasellus nec iaculis mauris. <a href="#">@bulmaio</a>.
+              <a href="#">#css</a> <a href="#">#responsive</a>
+              <br>
+              <small>11:09 PM - 1 Jan 2016</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="modal-close"></button>
+    </div>
+
+
+  </div>
+</div>

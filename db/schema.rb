@@ -29,13 +29,11 @@ ActiveRecord::Schema.define(version: 20161112034501) do
   end
 
   create_table "event_recurrences", force: :cascade do |t|
-    t.datetime "start_date"
     t.datetime "end_date"
-    t.string   "every"
-    t.string   "on"
+    t.string   "day_of_week"
     t.integer  "coach_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["coach_id"], name: "index_event_recurrences_on_coach_id", using: :btree
   end
 
@@ -46,6 +44,8 @@ ActiveRecord::Schema.define(version: 20161112034501) do
     t.string   "duration"
     t.integer  "guest_coach_id"
     t.string   "location"
+    t.datetime "date"
+    t.string   "team_name"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["coach_id"], name: "index_practices_on_coach_id", using: :btree
