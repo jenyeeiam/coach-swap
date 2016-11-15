@@ -10,5 +10,10 @@
         <%= practice.location %>
       </div>
 
+      <%= form_tag(coach_practice_path(id: practice.id, guest_coach_id: params[:coach_id]), method: :put) do %>
+        <% if !practice.guest_coach_id %>
+          <%= submit_tag "RSVP" %>
+        <% end %>
+      <% end %>
     </li>
 <% end %>

@@ -44,15 +44,16 @@ Coach.create!({
 Practice.destroy_all
 
 10.times do |i|
+  date = Faker::Date.forward(7)
   Practice.create!({
     coach_id: 1 + rand(3),
-    day_of_week: Faker::Date.forward(7).strftime('%A'),
+    day_of_week: date.strftime('%A'),
     time: '8:00pm',
     duration: '2 hours',
-    guest_coach_id: 1 + rand(3),
+    guest_coach_id: nil,
     team_name: Faker::Team.name,
     location: Faker::Address.street_address,
-    date: Date.today,
+    date: date,
     # end_date: Faker::Date.between(6.months.from_now, 1.year.from_now)
   })
 end

@@ -11,6 +11,27 @@ class PracticesController < ApplicationController
     @all_practices = Practice.all
   end
 
+  def edit
+    @practice = Practice.find(params[:id])
+  end
+
+  def update
+    guest_coach = Coach.find(params[:guest_coach_id])
+    practice = Practice.find(params[:id])
+    practice.guest_coach_id = params[:guest_coach_id]
+    host_coach = Coach.find(practice.coach_id)
+
+    if practice.save
+      # CoachSwapMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
+      HostMailer.confirmation_email_host(guest_coach, host_coach, practice).deliver_later
+
+      redirect_to :root
+    else
+      redirect_to coach_practice_path, error: order.errors.full_messages.first
+    end
+
+  end
+
   def new
     @coach = Coach.find(params[:coach_id])
     @practice = @coach.practices.new

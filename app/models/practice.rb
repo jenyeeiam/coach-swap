@@ -16,4 +16,5 @@ class Practice < ApplicationRecord
     Recurrence.weekly(options).events
   end
 
+
 end
