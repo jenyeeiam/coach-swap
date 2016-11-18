@@ -22,7 +22,7 @@ class PracticesController < ApplicationController
     host_coach = Coach.find(practice.coach_id)
 
     if practice.save
-      # CoachSwapMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
+      CoachSwapMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
       HostMailer.confirmation_email_host(guest_coach, host_coach, practice).deliver_later
 
       redirect_to :root
