@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= form_tag practices_path do %>
+        <%= form_tag coach_practices_path do %>
           <% @practices.each_with_index do |practice, index| %>
           <%= render 'practice_form', index: index %>
           <% end %>

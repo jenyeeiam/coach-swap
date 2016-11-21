@@ -1,0 +1,8 @@
+<div class="filter-box">View Practices By:
+  <%= form_tag practices_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Filter", :name => nil %>
+    </p>
+  <% end %>
+</div>

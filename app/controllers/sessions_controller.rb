@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     coach = Coach.find_by email: (params[:email])
     if coach = Coach.authenticate_with_credentials(params[:email], params[:password])
       session[:coach_id] = coach.id
-      redirect_to [:root], notice: "Welcome #{coach.name}"
+      redirect_to "/coaches/#{coach.id}/practices", notice: "Welcome #{coach.name}"
     else
       redirect_to login_path, notice: "Try again"
     end

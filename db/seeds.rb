@@ -43,7 +43,7 @@ Coach.create!({
 
 Practice.destroy_all
 
-10.times do |i|
+20.times do |i|
   date = Faker::Date.forward(7)
   Practice.create!({
     coach_id: 1 + rand(3),
@@ -54,7 +54,8 @@ Practice.destroy_all
     team_name: Faker::Team.name,
     location: Faker::Address.street_address,
     date: date,
-    # end_date: Faker::Date.between(6.months.from_now, 1.year.from_now)
+    age_group: '12U',
+    state: "Alabama"
   })
 end
 
@@ -62,9 +63,7 @@ EventRecurrence.destroy_all
 
 EventRecurrence.create!({
   coach_id: 1,
-  # start_date: Time.now,
   end_date: 6.months.from_now,
-  # every: 'week',
   day_of_week: 'monday'
 })
 

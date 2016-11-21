@@ -2,99 +2,34 @@
 
 <div class="columns">
   <div class="column is-3">
-    <div>Filter</div>
+
+    <%= render 'filter', practices: @all_practices %>
   </div>
   <div class="column is-4">
-    <article class="message">
-      <div class="message-header has-text-centered">
-        <%= date_calculator(Date.today) %>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% @all_practices.each do |practice| %>
-            <%= render 'practice', practice: practice, date: Date.today %>
-          <% end %>
-        </ul>
-      </div>
-    </article>
+    <% i = 0 %>
+    <% date = Date.today %>
+    <% 7.times do |i| %>
+      <% counter = 0 + i %>
+      <% if @all_practices.any? {|a| a.date == date + counter} %>
+        <article class="message">
+          <div class="message-header has-text-centered">
+            <%= date_calculator(date + counter) %>
+          </div>
+          <div class="message-body">
+            <ul>
+              <% @all_practices.each do |practice| %>
+                <%= render 'practice', practice: practice, date: (date + counter), coaches: @all_coaches %>
+              <% end %>
+            </ul>
+          </div>
+        </article>
 
-    <article class="message">
-      <div class="message-header has-text-centered">
-        <%= date_calculator(1.day.from_now)%>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% @all_practices.each do |practice| %>
-            <%= render 'practice', practice: practice, date: 1.day.from_now %>
-          <% end %>
-        </ul>
-      </div>
-    </article>
+      <% end %>
+    <% end %>
 
-    <article class="message">
-      <div class="message-header has-text-centered">
-        <%= date_calculator(2.days.from_now)%>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% @all_practices.each do |practice| %>
-            <%= render 'practice', practice: practice, date: 2.days.from_now %>
-          <% end %>
-        </ul>
-      </div>
-    </article>
 
-    <article class="message">
-      <div class="message-header has-text-centered">
-        <%= date_calculator(3.days.from_now)%>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% @all_practices.each do |practice| %>
-            <%= render 'practice', practice: practice, date: (3.days.from_now) %>
-          <% end %>
-        </ul>
-      </div>
-    </article>
 
-    <article class="message">
-      <div class="message-header has-text-centered">
-        <%= date_calculator(4.days.from_now)%>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% @all_practices.each do |practice| %>
-            <%= render 'practice', practice: practice, date: (4.days.from_now) %>
-          <% end %>
-        </ul>
-      </div>
-    </article>
 
-    <article class="message">
-      <div class="message-header has-text-centered">
-        <%= date_calculator(5.days.from_now)%>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% @all_practices.each do |practice| %>
-            <%= render 'practice', practice: practice, date: (5.days.from_now) %>
-          <% end %>
-        </ul>
-      </div>
-    </article>
-
-    <article class="message">
-      <div class="message-header has-text-centered">
-        <%= date_calculator(6.days.from_now)%>
-      </div>
-      <div class="message-body">
-        <ul>
-          <% @all_practices.each do |practice| %>
-            <%= render 'practice', practice: practice, date: (6.days.from_now) %>
-          <% end %>
-        </ul>
-      </div>
-    </article>
 
 
   </div>

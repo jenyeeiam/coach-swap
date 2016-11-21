@@ -15,7 +15,7 @@ class CoachesController < ApplicationController
       flash[:notice] = "Thanks for joining!"
       session[:coach_id] = @coach.id
       @coach.authenticate(params[:password])
-      redirect_to [:root]
+      redirect_to "/coaches/#{@coach.id}/practices"
     else
       render :new
     end

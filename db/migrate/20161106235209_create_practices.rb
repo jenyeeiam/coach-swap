@@ -7,11 +7,10 @@ class CreatePractices < ActiveRecord::Migration[5.0]
       t.string :duration
       t.integer :guest_coach_id
       t.string :location
-      # t.datetime :start_date
-      # t.datetime :end_date
       t.datetime :date
       t.string :team_name
-      # t.string :on
+      t.string :age_group
+      t.string :state
 
       t.timestamps
     end

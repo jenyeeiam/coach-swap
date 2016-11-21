@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20161112034501) do
     t.string   "location"
     t.datetime "date"
     t.string   "team_name"
+    t.string   "age_group"
+    t.string   "state"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["coach_id"], name: "index_practices_on_coach_id", using: :btree

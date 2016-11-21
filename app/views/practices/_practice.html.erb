@@ -1,19 +1,20 @@
 <% if practice.date.strftime('%m/%d/%Y') == date.strftime('%m/%d/%Y') %>
-    <li class="practice-entry">
-      <div class="practice-time is-inline-flex">
-        <%= practice.time %>
-      </div>
-      <div class="is-inline-flex">
-        <strong><%= practice.team_name %></strong>
-      </div>
-      <div class="block">
-        <%= practice.location %>
-      </div>
+  <% coach = @all_coaches.find {|a| a.id == practice.coach_id} %>
+  <li class="practice-entry">
+    <div class="practice-time is-inline-flex">
+      <%= practice.time %>
+    </div>
+    <div class="is-inline-flex">
+      <strong><%= coach.team %> <%= practice.age_group %></strong>
+    </div>
+    <div class="block">
+      <%= practice.location %>
+    </div>
 
-      <%= form_tag(coach_practice_path(id: practice.id, guest_coach_id: params[:coach_id]), method: :put) do %>
-        <% if !practice.guest_coach_id %>
-          <%= submit_tag "RSVP" %>
-        <% end %>
+    <%= form_tag(coach_practice_path(id: practice.id, guest_coach_id: params[:coach_id]), method: :put) do %>
+      <% if !practice.guest_coach_id %>
+        <%= submit_tag "Join Practice", class: "button is-danger" %>
       <% end %>
-    </li>
+    <% end %>
+  </li>
 <% end %>

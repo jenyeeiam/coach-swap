@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/how-it-works', to: 'welcome#show'
 
   resources :coaches
-  # resources :practices
+  resources :practices, only: [:index]
   resources :sessions
 
   resources :coaches do

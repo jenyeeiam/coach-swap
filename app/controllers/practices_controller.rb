@@ -7,8 +7,10 @@ class PracticesController < ApplicationController
 
   def index
     @coach = Coach.find(current_user[:id])
+    @filtered = Practice.search params[:search]
     @my_practices = @coach.practices
-    @all_practices = Practice.all
+    @all_practices = Practice.where("date <= ?", 7.days.from_now)
+    @all_coaches = Coach.all
   end
 
   def edit
@@ -55,13 +57,15 @@ class PracticesController < ApplicationController
           prac = @coach.practices.new(practice_params(practice))
           prac.date = i
           prac.team_name = @coach.team
+          prac.age_group = @coach.age_group
+          prac.state = @coach.state
           prac.save
         end
 
         # new_practice.save
       end
     end
-    redirect_to practices_path
+    redirect_to coach_practices_path
 
   end
 
