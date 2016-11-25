@@ -7,7 +7,7 @@ class PracticesController < ApplicationController
 
   def index
     @coach = Coach.find(current_user[:id])
-    @filtered = Practice.search params[:search]
+    # @filtered = Practice.search params[:search]
     @my_practices = @coach.practices
     @all_practices = Practice.where("date <= ?", 7.days.from_now)
     @all_coaches = Coach.all

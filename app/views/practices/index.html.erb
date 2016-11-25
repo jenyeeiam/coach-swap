@@ -2,8 +2,22 @@
 
 <div class="columns">
   <div class="column is-3">
-
-    <%= render 'filter', practices: @all_practices %>
+    <h2>Filters</h2>
+    <form id="filters-form" method="get">
+      <%= render partial: 'select_field',
+                 locals: {name: 'Age Group',
+                          options: unique_fields(Coach, :age_group),
+                          value: params['age_group']
+                 } %>
+      <%= render partial: 'text_field', locals: {name: 'city'} %>
+      <%= render partial: 'select_field',
+                 locals: {name: 'State',
+                          options: unique_fields(Practice, :state),
+                          value: params['state']
+                 } %>
+      <%= submit_tag 'Apply', class: "button is-success" %>
+      <%= link_to 'Clear All', practices_path, class: 'button is-danger' %>    
+    </form>
   </div>
   <div class="column is-4">
     <% i = 0 %>

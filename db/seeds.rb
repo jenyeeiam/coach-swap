@@ -13,7 +13,7 @@ Coach.create!({
   name: Faker::Name.name,
   team: 'Team A',
   age_group: '12U',
-  state: "Alabama",
+  state: "Colorado",
   email: Faker::Internet.email,
   phone: Faker::Number.number(10),
   password_digest: "password"
@@ -23,7 +23,7 @@ Coach.create!({
   name: Faker::Name.name,
   team: 'Team B',
   age_group: '12U',
-  state: "Alabama",
+  state: "Colorado",
   email: Faker::Internet.email,
   phone: Faker::Number.number(10),
   password_digest: "password"
@@ -34,7 +34,7 @@ Coach.create!({
   name: Faker::Name.name,
   team: 'Team C',
   age_group: '12U',
-  state: "Alabama",
+  state: "Colorado",
   email: Faker::Internet.email,
   phone: Faker::Number.number(10),
   password_digest: "password"
@@ -55,7 +55,7 @@ Practice.destroy_all
     location: Faker::Address.street_address,
     date: date,
     age_group: '12U',
-    state: "Alabama"
+    state: "Colorado"
   })
 end
 

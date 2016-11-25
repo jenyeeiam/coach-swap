@@ -1,0 +1,4 @@
+<div class="form-group">
+  <label for="<%= name %>"><%= name.titleize %></label>
+  <%= select_tag name, options_for_select(options, value), class: 'form-control' %>
+</div>
