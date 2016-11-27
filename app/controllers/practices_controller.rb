@@ -7,10 +7,18 @@ class PracticesController < ApplicationController
 
   def index
     @coach = Coach.find(current_user[:id])
-    # @filtered = Practice.search params[:search]
     @my_practices = @coach.practices
-    @all_practices = Practice.where("date <= ?", 7.days.from_now)
     @all_coaches = Coach.all
+    # practices + filters
+    @practices = Practice.all
+    @practices = @practices.filter_by_age_group(params[:age_group]) if search_params[:age_group]
+    @practices = @practices.filter_by_city(params[:city]) if search_params[:city]
+    @practices = @practices.filter_by_zipcode(params[:zipcode]) if search_params[:zipcode]
+    @practices = @practices.filter_by_state(params[:state]) if search_params[:state]
+    if @practices.blank? || @practices.empty?
+      flash[:error] = 'Sorry no practices found'
+      redirect_to coach_practices_path
+    end
   end
 
   def edit
@@ -83,6 +91,12 @@ class PracticesController < ApplicationController
       :day_of_week,
       :end_date
     )
+  end
+
+  def search_params
+    params.permit(:age_group, :city, :zipcode, :state).transform_values do |value|
+      value.empty? ? nil : value
+    end
   end
 
 end

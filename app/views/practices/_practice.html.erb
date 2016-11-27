@@ -8,7 +8,7 @@
       <strong><%= coach.team %> <%= practice.age_group %></strong>
     </div>
     <div class="block">
-      <%= practice.location %>
+      <%= practice.street %> <%= practice.city %> <%= practice.zipcode %>
     </div>
 
     <%= form_tag(coach_practice_path(id: practice.id, guest_coach_id: params[:coach_id]), method: :put) do %>

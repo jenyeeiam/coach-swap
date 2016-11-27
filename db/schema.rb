@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112034501) do
+ActiveRecord::Schema.define(version: 20161123001745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+  enable_extension "fuzzystrmatch"
 
   create_table "coaches", force: :cascade do |t|
     t.string   "name"
@@ -43,7 +45,9 @@ ActiveRecord::Schema.define(version: 20161112034501) do
     t.string   "time"
     t.string   "duration"
     t.integer  "guest_coach_id"
-    t.string   "location"
+    t.string   "street"
+    t.string   "city"
+    t.string   "zipcode"
     t.datetime "date"
     t.string   "team_name"
     t.string   "age_group"

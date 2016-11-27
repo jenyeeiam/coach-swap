@@ -33,7 +33,7 @@ gem "mini_magick"
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'faker'
 gem 'bootstrap-datepicker-rails'
-gem 'ice_cube'
+gem 'pg_search'
 gem 'momentjs-rails'
 gem "recurrence", :require => "recurrence/namespace"
 # Use Capistrano for deployment

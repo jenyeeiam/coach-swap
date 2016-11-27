@@ -197,7 +197,6 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
-    ice_cube (0.14.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jbuilder (2.6.0)
@@ -229,6 +228,10 @@ GEM
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     pg (0.19.0)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     puma (3.6.0)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -320,13 +323,13 @@ DEPENDENCIES
   faker
   figaro
   fog
-  ice_cube
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
   mini_magick
   momentjs-rails
   pg
+  pg_search
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   recurrence

@@ -43,7 +43,7 @@ Coach.create!({
 
 Practice.destroy_all
 
-20.times do |i|
+25.times do |i|
   date = Faker::Date.forward(7)
   Practice.create!({
     coach_id: 1 + rand(3),
@@ -52,7 +52,9 @@ Practice.destroy_all
     duration: '2 hours',
     guest_coach_id: nil,
     team_name: Faker::Team.name,
-    location: Faker::Address.street_address,
+    city: Faker::Address.city,
+    street: Faker::Address.street_address,
+    zipcode: Faker::Address.zip,
     date: date,
     age_group: '12U',
     state: "Colorado"
