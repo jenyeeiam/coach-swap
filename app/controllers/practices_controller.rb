@@ -56,7 +56,7 @@ class PracticesController < ApplicationController
   def create
     @coach = Coach.find(current_user[:id])
     params["practices"].each do |practice|
-      if practice[:time] != '' || practice[:duration] != '' || practice[:location] != ''
+      if practice[:time] != '' || practice[:duration] != '' || practice[:street] != '' || practice[:city] != '' || practice[:zipcode] != ''
         # new_practice = @coach.practices.new(practice_params(practice))
         # new_practice.start_date = Date.today
         # new_practice.team_name = @coach.team
@@ -82,7 +82,9 @@ class PracticesController < ApplicationController
       :day_of_week,
       :time,
       :duration,
-      :location
+      :street,
+      :city,
+      :zipcode
     )
   end
 

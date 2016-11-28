@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.practice-form').first().css("visibility", "visible")
+  // $('.practice-form').first().css("visibility", "visible")
   var $current = $('.practice-form').first()
 
   $('.add-practice').click(function(){

@@ -14,6 +14,8 @@
     <%= form_tag(coach_practice_path(id: practice.id, guest_coach_id: params[:coach_id]), method: :put) do %>
       <% if !practice.guest_coach_id %>
         <%= submit_tag "Join Practice", class: "button is-danger" %>
+      <% else %>
+        <%= link_to "Edit Practice", edit_coach_practice_path, class: "button is-info" %>
       <% end %>
     <% end %>
   </li>

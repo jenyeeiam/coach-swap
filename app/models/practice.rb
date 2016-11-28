@@ -8,9 +8,8 @@ class Practice < ApplicationRecord
 
   has_one :coach
 
-  # def self.make_a_practice(date, time, location)
-  #   Practice.create(day: date, time: time, location: location)
-  # end
+  validates :time, :duration, :street, :city, :zipcode, presence: :true
+
 
   scope :filter_by_age_group, -> (age_group) {
     where(age_group: age_group)

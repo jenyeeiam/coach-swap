@@ -1,3 +1,4 @@
+<%= render 'layouts/top_nav' %>
 
 <div class="columns">
   <div class="column is-one-third"></div>
@@ -5,17 +6,6 @@
     <h1 class="title is-2">Create a Profile</h1>
     </br>
     <%= form_for @coach do |f| %>
-
-      <% if f.object.errors.any? %>
-        <div class="alert alert-danger">
-          <strong>The following errors prevented saving:</strong>
-          <ul>
-            <% f.object.errors.full_messages.each do |error| %>
-              <li><%= error %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
 
       <%= f.file_field(:avatar) %>
       <p class="control has-icon">

@@ -2053,7 +2053,7 @@ a.box:active {
 }
 
 .notification {
-  background-color: whitesmoke;
+  /*background-color: whitesmoke;*/
   border-radius: 3px;
   padding: 16px 20px;
   position: relative;

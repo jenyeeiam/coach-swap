@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/how-it-works', to: 'welcome#show'
 
-  resources :coaches
+  resources :coaches, only: [:create, :new, :edit]
   resources :practices, only: [:index]
   resources :sessions
 

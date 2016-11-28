@@ -1,20 +1,25 @@
 <tr class="practice-form">
   <td>
-    <%= select_tag("practices[][day_of_week]", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])) %>
+    <span class="select is-medium">
+      <%= select_tag "practices[][day_of_week]", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]) %>
+    </span>
+  </td>
+  <td class="mini-field">
+    <%= text_field_tag "practices[][time]", nil, class: "input is-medium", placeholder: "6:00pm" %>
+  </td>
+  <td class="mini-field">
+    <%= text_field_tag "practices[][duration]", nil, class: "input is-medium", placeholder: "2" %>
+  </td>
+  <td class="street-field">
+    <%= text_field_tag "practices[][street]", nil, class: "input is-medium", placeholder: "123 My Street" %>
   </td>
   <td>
-    <%= text_field_tag("practices[][time]") %>
+    <%= text_field_tag "practices[][city]", nil, class: "input is-medium", placeholder: "Denver" %>
+  </td>
+  <td class="mini-field">
+    <%= text_field_tag "practices[][zipcode]", nil, class: "input is-medium", placeholder: "12345" %>
   </td>
   <td>
-    <%= text_field_tag("practices[][duration]") %>
+    <%= date_field_tag "practices[][end_date]", nil, class: "input is-medium" %>
   </td>
-  <td>
-    <%= text_field_tag("practices[][location]") %>
-  </td>
-  <td>
-    <!-- <p class="recurring">Reoccuring?</p> -->
-    <%= date_field_tag("practices[][end_date]") %>
-  </td>
-
-
 </tr>

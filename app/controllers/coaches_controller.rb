@@ -16,7 +16,8 @@ class CoachesController < ApplicationController
       session[:coach_id] = @coach.id
       @coach.authenticate(params[:password])
       redirect_to "/coaches/#{@coach.id}/practices"
-    else
+    elsif !@coach.valid?
+      flash[:notice] = "All fields are required. We strive for a transparent platform for all coaches!"
       render :new
     end
   end

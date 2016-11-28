@@ -13,9 +13,13 @@
   margin: auto;
 }
 
-.practice-form {
-  visibility: hidden;
-}
+// .practice-form {
+//   visibility: hidden;
+// }
+//
+// .practice-form:first-child {
+//   visibility: visible;
+// }
 
 .end-date {
   display: none;
@@ -35,4 +39,46 @@
 
 .filter-box {
   background-color: green;
+}
+
+a.tooltips {
+  position: relative;
+  display: inline;
+  color: #7a7a7a;
+}
+a.tooltips span {
+  position: absolute;
+  width: 400px;
+  color: #000000;
+  background: #BABABA;
+  height: 100px;
+  line-height: 30px;
+  text-align: left;
+  visibility: hidden;
+  border-radius: 6px;
+  font-weight: 100;
+  font-size: 15px;
+}
+a.tooltips span:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  width: 0; height: 0;
+  border-top: 8px solid #BABABA;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+a:hover.tooltips span {
+  visibility: visible;
+  opacity: 0.8;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -76px;
+  z-index: 999;
+}
+
+.mini-field {
+  width: 125px;
 }

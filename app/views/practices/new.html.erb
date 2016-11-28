@@ -1,32 +1,42 @@
 <%= render 'layouts/top_nav' %>
 
 <div class="columns">
-  <div class="column is-3"></div>
-  <div class="column is-6">
+  <div class="column is-1"></div>
+  <div class="column is-10">
     </br>
     <h1 class="title is-2">My Practice Schedule</h1>
+    <h4 class="title is-4">Create a regular practice schedule for your team</h4>
     </br>
     <table class="table">
       <thead>
         <tr>
           <th>Day</th>
           <th>Time</th>
-          <th>Duration (hours)</th>
-          <th>Location</th>
-          <th>End Date</th>
+          <th>Duration (hrs)</th>
+          <th>Street</th>
+          <th>City</th>
+          <th>Zipcode</th>
+          <th>
+            <a class="tooltips">End Date
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+              <span>If this is a reoccuring practice, the last date this practice occurs</span>
+            </a>
+
+          </th>
         </tr>
       </thead>
       <tbody>
         <%= form_tag coach_practices_path do %>
+
           <% @practices.each_with_index do |practice, index| %>
-          <%= render 'practice_form', index: index %>
+            <%= render 'practice_form', index: index %>
           <% end %>
-      </tbody>
-      <tfoot>
-        <%= submit_tag "Submit" %>
+          <tr>
+            <td colspan="7"><%= submit_tag "Submit", class: "button is-success is-medium is-pulled-right" %></td>
+          </tr>
         <% end %>
-        <button class="add-practice">Add Practice</button>
-      </tfoot>
+      </tbody>
+
     </table>
   </div>
 </div>
