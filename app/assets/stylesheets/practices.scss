@@ -38,7 +38,9 @@
 }
 
 .filter-box {
-  background-color: green;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 40px;
 }
 
 a.tooltips {
@@ -51,13 +53,14 @@ a.tooltips span {
   width: 400px;
   color: #000000;
   background: #BABABA;
-  height: 100px;
-  line-height: 30px;
+  height: 80px;
+  line-height: 20px;
   text-align: left;
   visibility: hidden;
   border-radius: 6px;
   font-weight: 100;
   font-size: 15px;
+  padding: 8px;
 }
 a.tooltips span:after {
   content: '';
@@ -81,4 +84,8 @@ a:hover.tooltips span {
 
 .mini-field {
   width: 125px;
+}
+
+.practice-form-main {
+  margin: 25px;
 }

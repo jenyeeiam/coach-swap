@@ -1,18 +1,18 @@
 <%= render 'layouts/top_nav' %>
 
 <div class="columns">
-  <div class="column is-3">
-    <h2>Filters</h2>
+  <div class="column is-3 filter-box">
+    <h4 class="title is-4">Search By:</h4>
     <form id="filters-form" method="get">
       <%= render partial: 'select_field',
-                 locals: {name: 'Age Group',
+                 locals: {name: 'age_group',
                           options: unique_fields(Practice, :age_group),
                           value: params['age_group']
                  } %>
       <%= render partial: 'text_field', locals: {name: 'city'} %>
       <%= render partial: 'text_field', locals: {name: 'zipcode'} %>
       <%= render partial: 'select_field',
-                 locals: {name: 'State',
+                 locals: {name: 'state',
                           options: unique_fields(Practice, :state),
                           value: params['state']
                  } %>

@@ -7,12 +7,10 @@
 
   <div class="nav-right nav-menu">
     <% if current_user %>
-    <%= link_to "Make Practice Schedule", new_coach_practice_path, :class => "nav-item" %>
+    <%= link_to "Make Practice Schedule", "/coaches/#{params[:coach_id]}/practices/new", :class => "nav-item" %>
     <%= link_to 'Logout', '/logout', :class => "nav-item" %>
     <% end %>
-    <!-- <a class="nav-item" href="#">
-      My Practice Schedule
-    </a> -->
+
 </nav>
 <div class="notification">
   <% flash.each do |name, msg| -%>

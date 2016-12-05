@@ -1,8 +1,8 @@
 <%= render 'layouts/top_nav' %>
 
 <div class="columns">
-  <div class="column is-1"></div>
-  <div class="column is-10">
+  <!--<div class="column is-1"></div>-->
+  <div class="column practice-form-main">
     </br>
     <h1 class="title is-2">My Practice Schedule</h1>
     <h4 class="title is-4">Create a regular practice schedule for your team</h4>
@@ -10,8 +10,9 @@
     <table class="table">
       <thead>
         <tr>
+          <th></th>
           <th>Day</th>
-          <th>Time</th>
+          <th>Start Time</th>
           <th>Duration (hrs)</th>
           <th>Street</th>
           <th>City</th>
@@ -19,7 +20,7 @@
           <th>
             <a class="tooltips">End Date
               <i class="fa fa-info-circle" aria-hidden="true"></i>
-              <span>If this is a reoccuring practice, the last date this practice occurs</span>
+              <span>If this practice happens every week, this is the date the last practice occurs. Otherwise only one practice is saved</span>
             </a>
 
           </th>
@@ -28,11 +29,10 @@
       <tbody>
         <%= form_tag coach_practices_path do %>
 
-          <% @practices.each_with_index do |practice, index| %>
-            <%= render 'practice_form', index: index %>
-          <% end %>
+            <%= render 'practice_form', index: 0 %>
           <tr>
-            <td colspan="7"><%= submit_tag "Submit", class: "button is-success is-medium is-pulled-right" %></td>
+            <td colspan="12"><%= submit_tag "Submit", class: "button is-success is-medium is-pulled-right" %></td>
+            <td colspan="12"><%= submit_tag "Add", class: "button is-success is-medium is-pulled-right" %></td>
           </tr>
         <% end %>
       </tbody>
