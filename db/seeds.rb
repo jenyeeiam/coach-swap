@@ -47,7 +47,6 @@ Practice.destroy_all
   date = Faker::Date.forward(7)
   Practice.create!({
     coach_id: 1 + rand(3),
-    day_of_week: date.strftime('%A'),
     time: '8:00pm',
     duration: '2 hours',
     guest_coach_id: nil,

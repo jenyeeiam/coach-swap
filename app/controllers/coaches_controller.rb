@@ -2,7 +2,8 @@ class CoachesController < ApplicationController
 
   def show
     @coach = Coach.find(params[:id])
-    @practices = @coach.practices
+    @practices = @coach.practices.order :date
+    @my_practices = Practice.find_by(guest_coach_id: @coach.id)
   end
 
   def new

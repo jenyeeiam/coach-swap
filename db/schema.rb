@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20161123001745) do
 
   create_table "practices", force: :cascade do |t|
     t.integer  "coach_id"
-    t.string   "day_of_week"
     t.string   "time"
     t.string   "duration"
     t.integer  "guest_coach_id"

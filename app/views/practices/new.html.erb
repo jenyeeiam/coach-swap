@@ -5,38 +5,34 @@
   <div class="column practice-form-main">
     </br>
     <h1 class="title is-2">My Practice Schedule</h1>
-    <h4 class="title is-4">Create a regular practice schedule for your team</h4>
+    <h4 class="title is-4">Create a practice schedule for your team</h4>
     </br>
+    <%=	form_for [@coach, @practice] do |f| %>
     <table class="table">
       <thead>
         <tr>
-          <th></th>
-          <th>Day</th>
           <th>Start Time</th>
           <th>Duration (hrs)</th>
           <th>Street</th>
           <th>City</th>
           <th>Zipcode</th>
+          <th>Start Date</th>
           <th>
             <a class="tooltips">End Date
               <i class="fa fa-info-circle" aria-hidden="true"></i>
-              <span>If this practice happens every week, this is the date the last practice occurs. Otherwise only one practice is saved</span>
+              <span>Does this practice occur every week? If so, enter the last date for this practice.</span>
             </a>
 
           </th>
         </tr>
       </thead>
       <tbody>
-        <%= form_tag coach_practices_path do %>
+        <%= render 'practice_form_2', f: f %>
+        <td colspan="3"><%=	f.submit "Submit", class: "button is-success" %> <%= f.submit "Submit and add practice", name: "add_practice", class: "add_practice button is-success" %> <span class="back_link"><%= link_to "Back", coach_practices_path %></span></td>
 
-            <%= render 'practice_form', index: 0 %>
-          <tr>
-            <td colspan="12"><%= submit_tag "Submit", class: "button is-success is-medium is-pulled-right" %></td>
-            <td colspan="12"><%= submit_tag "Add", class: "button is-success is-medium is-pulled-right" %></td>
-          </tr>
-        <% end %>
+
       </tbody>
-
     </table>
+    <% end %>
   </div>
 </div>

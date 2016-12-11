@@ -22,69 +22,88 @@ class PracticesController < ApplicationController
   end
 
   def edit
+    @coach = Coach.find(params[:coach_id])
     @practice = Practice.find(params[:id])
   end
 
   def update
-    guest_coach = Coach.find(params[:guest_coach_id])
     practice = Practice.find(params[:id])
+    if params[:edit_practice]
+      practice.update! update_practice_params
+      redirect_to "/coaches/#{params[:coach_id]}"
+    else
+    guest_coach = Coach.find(params[:guest_coach_id])
     practice.guest_coach_id = params[:guest_coach_id]
     host_coach = Coach.find(practice.coach_id)
 
     if practice.save
-      CoachSwapMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
-      HostMailer.confirmation_email_host(guest_coach, host_coach, practice).deliver_later
-
-      redirect_to :root
+    CoachSwapMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
+    HostMailer.confirmation_email_host(guest_coach, host_coach, practice).deliver_later
+    flash[:notice] = "You just joined a practice! Check your inbox for your confirmation email"
+    redirect_to coach_practices_path
     else
-      redirect_to coach_practice_path, error: order.errors.full_messages.first
+    redirect_to coach_practices_path, error: order.errors.full_messages.first
     end
 
+    end
   end
 
   def new
     @coach = Coach.find(params[:coach_id])
     @practice = @coach.practices.new
-    # @practices = []
-    # 7.times do
-    #   @practices << Coach.find(params[:coach_id]).practices.new
-    # end
-
   end
 
   def create
-    # @coach = Coach.find(current_user[:id])
-    # first_practice = params[:practices][0]
-    # if first_practice[:time] == '' || first_practice[:duration] == '' || first_practice[:street] == '' || first_practice[:city] == '' || first_practice[:zipcode] == ''
-    #   flash[:notice] = "Fill in at least one practice before submitting!"
-    #   byebug
-    #   render :new
-    # else
-    #
-    #   params["practices"].each do |practice|
-    #     if practice[:time] != '' || practice[:duration] != '' || practice[:street] != '' || practice[:city] != '' || practice[:zipcode] != ''
-    #       # new_practice = @coach.practices.new(practice_params(practice))
-    #       # new_practice.start_date = Date.today
-    #       # new_practice.team_name = @coach.team
-    #       new_practice = @coach.event_recurrences.new(events_params(practice))
-    #       new_practice.dates.each do |i|
-    #         prac = @coach.practices.new(practice_params(practice))
-    #         prac.date = i
-    #         prac.team_name = @coach.team
-    #         prac.age_group = @coach.age_group
-    #         prac.state = @coach.state
-    #         prac.save
-    #       end
-    #     end
-    #   end
-    #   redirect_to coach_practices_path
-    # end
+    @coach = Coach.find(params[:coach_id])
+    if params["end_date"].blank?
+      @practice = @coach.practices.new practice_params(params[:practice])
+      @practice.date = params[:start_date].to_date
+      @practice.team_name = @coach[:team]
+      @practice.state = @coach[:state]
+      @practice.age_group = @coach.age_group
+      if @practice.save && params[:add_practice]
+        flash[:notice] = "Great work. Add another practice!"
+        render :new
+      elsif @practice.save
+        redirect_to "/coaches/#{@coach.id}/practices"
+      else
+        flash[:notice] = "All fields are required."
+        byebug
+        render :new
+      end
+    else
+      date_range = (params[:start_date].to_date)..(params[:end_date].to_date)
+      practice_dates = date_range.select {|d| [params[:start_date].to_date.strftime("%u").to_i].include?(d.wday)}
+      practice_dates.each do |date|
+        @practice = @coach.practices.new practice_params(params[:practice])
+        @practice.date = date
+        @practice.team_name = @coach[:team]
+        @practice.state = @coach[:state]
+        @practice.age_group = @coach.age_group
+        if !@practice.valid?
+          flash[:notice] = "Something's terribly wrong"
+          render :new_coach_practice_path
+        end
+        @practice.save
+      end
+      if params[:add_practice]
+        flash[:notice] = "Great work! Add another practice!"
+        render :new
+      else
+        redirect_to "/coaches/#{@coach.id}/practices"
+      end
+    end
 
+  end
+
+  def destroy
+    practice = Practice.find(params[:id])
+    practice.delete
+    redirect_to "/coaches/#{current_user.id}"
   end
 
   def practice_params(practice)
     practice.permit(
-      :day_of_week,
       :time,
       :duration,
       :street,
@@ -100,10 +119,15 @@ class PracticesController < ApplicationController
     )
   end
 
-  def search_params
-    params.permit(:age_group, :city, :zipcode, :state).transform_values do |value|
-      value.empty? ? nil : value
-    end
+  def update_practice_params
+    params.require(:practice).permit(
+      :time,
+      :duration,
+      :street,
+      :city,
+      :zipcode,
+      :date
+    )
   end
 
 end

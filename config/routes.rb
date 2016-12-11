@@ -11,10 +11,8 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :coaches do
+    get 'my_practices', to: 'coaches#my_practices'
     resources :practices
   end
 
-  # namespace :coaches do
-  #   resources :practices
-  # end
 end

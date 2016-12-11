@@ -1,11 +1,32 @@
 <%= render 'layouts/top_nav' %>
-<h1>Profile Page</h1>
-<p><%= @coach.name %></p>
+<h1 class="title">Profile Page</h1>
+<p class="subtitle"><%= @coach.name %></p>
 <span><%= image_tag(@coach.avatar.thumb.url) if @coach.avatar_url %></span>
-<p>My practices</p>
 
-<ul>
-  <% @practices.each do |practice| %>
-  <li><%= practice.location %></li>
-  <% end %>
-</ul>
+<div class="columns">
+  <div class="column is-2"></div>
+  <div class="column is-4">
+    <h2 class="subtitle">My Practices</h2>
+    <ul>
+      <% @practices.each do |practice| %>
+        <li>
+          <%= practice.time %> <%= practice.street %> <%= practice.city %> <%= practice.date.strftime("%m/%d/%Y") %> <%= link_to("Destroy", "/coaches/#{params[:id]}/practices/#{practice.id}", method: :delete) %> <%= link_to("Edit", "/coaches/#{params[:id]}/practices/#{practice.id}/edit", method: :get) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="column is-1"></div>
+  <div class="column is-3">
+    <h2 class="subtitle">Practices I'm attending</h2>
+    <ul>
+      <% if @my_practices %>
+        <% @my_practices.each do |practice| %>
+          <li>
+            <%= practice.time %> <%= practice.street %> <%= practice.city %> <%= practice.date.strftime("%m/%d/%Y") %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="column is-2"></div>
+</div>

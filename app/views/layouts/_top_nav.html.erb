@@ -7,8 +7,9 @@
 
   <div class="nav-right nav-menu">
     <% if current_user %>
-    <%= link_to "Make Practice Schedule", "/coaches/#{params[:coach_id]}/practices/new", :class => "nav-item" %>
-    <%= link_to 'Logout', '/logout', :class => "nav-item" %>
+      <%= link_to "View All Practices", "/coaches/#{current_user.id}/practices/", class: "nav-item"  %>
+      <%= link_to "Make Practice Schedule", "/coaches/#{params[:coach_id]}/practices/new", :class => "nav-item" %>
+      <%= link_to 'Logout', '/logout', :class => "nav-item" %>
     <% end %>
 
 </nav>

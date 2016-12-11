@@ -35,6 +35,7 @@ gem 'faker'
 gem 'bootstrap-datepicker-rails'
 gem 'pg_search'
 gem 'momentjs-rails'
+gem 'pry'
 gem "recurrence", :require => "recurrence/namespace"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -13,14 +13,6 @@
   margin: auto;
 }
 
-// .practice-form {
-//   visibility: hidden;
-// }
-//
-// .practice-form:first-child {
-//   visibility: visible;
-// }
-
 .end-date {
   display: none;
 }
@@ -88,4 +80,14 @@ a:hover.tooltips span {
 
 .practice-form-main {
   margin: 25px;
+}
+
+.back_link {
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+.filter-box {
+  padding: 35px;
+  height: 500px;
 }

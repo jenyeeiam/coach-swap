@@ -1,1 +1,43 @@
 <%= render 'layouts/top_nav' %>
+
+<h1 class="title">Edit Practice</h1>
+
+<%=	form_for [@coach, @practice] do |f| %>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Start Time</th>
+    <th>Duration (hrs)</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>Zipcode</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr class="practice-form">
+      <td class="mini-field">
+        <%= f.text_field :time, class: "input is-medium", placeholder: "6:00pm" %>
+      </td>
+      <td class="mini-field">
+        <%= f.text_field :duration, class: "input is-medium", placeholder: "2" %>
+      </td>
+      <td class="street-field">
+        <%= f.text_field :street, class: "input is-medium", placeholder: "123 My Street" %>
+      </td>
+      <td class="mini-field">
+        <%= f.text_field :city, class: "input is-medium", placeholder: "Denver" %>
+      </td>
+      <td class="mini-field">
+        <%= f.text_field :zipcode, class: "input is-medium", placeholder: "12345" %>
+      </td>
+      <td>
+        <%= f.date_field :date, class: "input is-medium" %>
+      </td>
+      <td>
+        <%=	f.submit "Submit", name: "edit_practice", class: "button is-success" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>

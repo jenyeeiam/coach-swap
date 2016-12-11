@@ -1,0 +1,24 @@
+<tr class="practice-form">
+  <td class="mini-field">
+    <%= f.text_field :time, class: "input is-medium", placeholder: "6:00pm" %>
+  </td>
+  <td class="mini-field">
+    <%= f.text_field :duration, class: "input is-medium", placeholder: "2" %>
+  </td>
+  <td class="street-field">
+    <%= f.text_field :street, class: "input is-medium", placeholder: "123 My Street" %>
+  </td>
+  <td class="mini-field">
+    <%= f.text_field :city, class: "input is-medium", placeholder: "Denver" %>
+  </td>
+  <td class="mini-field">
+    <%= f.text_field :zipcode, class: "input is-medium", placeholder: "12345" %>
+  </td>
+  <td>
+    <%= date_field_tag :start_date, "", class: "input is-medium" %>
+  </td>
+  <td>
+    <%= date_field_tag :end_date, "", class: "input is-medium"%>
+  </td>
+</tr>
+
