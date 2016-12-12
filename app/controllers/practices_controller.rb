@@ -28,21 +28,26 @@ class PracticesController < ApplicationController
 
   def update
     practice = Practice.find(params[:id])
+    host_coach = Coach.find(practice.coach_id)
     if params[:edit_practice]
       practice.update! update_practice_params
       redirect_to "/coaches/#{params[:coach_id]}"
+    elsif params[:cancel_rsvp]
+      CancelMailer.cancellation_email(host_coach, practice).deliver_later
+      practice.update! guest_coach_id: nil
+      flash[:notice] = "Sorry you're not able to make this practice. We've notified #{host_coach.name} for you"
+      redirect_to coach_practices_path
     else
-    guest_coach = Coach.find(params[:guest_coach_id])
+      guest_coach = Coach.find(params[:guest_coach_id])
     practice.guest_coach_id = params[:guest_coach_id]
-    host_coach = Coach.find(practice.coach_id)
 
     if practice.save
-    CoachSwapMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
-    HostMailer.confirmation_email_host(guest_coach, host_coach, practice).deliver_later
-    flash[:notice] = "You just joined a practice! Check your inbox for your confirmation email"
-    redirect_to coach_practices_path
+      GuestMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
+      HostMailer.confirmation_email_host(guest_coach, host_coach, practice).deliver_later
+      flash[:notice] = "You just joined a practice! Check your inbox for your confirmation email"
+      redirect_to coach_practices_path
     else
-    redirect_to coach_practices_path, error: order.errors.full_messages.first
+      redirect_to coach_practices_path, error: order.errors.full_messages.first
     end
 
     end
@@ -128,6 +133,12 @@ class PracticesController < ApplicationController
       :zipcode,
       :date
     )
+  end
+
+  def search_params
+    params.permit(:age_group, :city, :zipcode, :state).transform_values do |value|
+      value.empty? ? nil : value
+    end
   end
 
 end

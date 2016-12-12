@@ -1,3 +1,25 @@
 // Place all the styles related to the coach controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.my_practices {
+  margin: 0.3em 0;
+}
+
+.contact_coach {
+  color: tomato;
+  font-style: italic;
+}
+
+.delete_practice a {
+  color: tomato;
+}
+
+.cancel_rsvp {
+  background:none!important;
+  border:none;
+  padding:0!important;
+  color: #00d1b2;
+  font-size: inherit;
+  cursor: pointer;
+}

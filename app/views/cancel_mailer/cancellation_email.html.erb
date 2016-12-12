@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Hi <%= @host_coach.name %>,</h1>
+<p>
+  Unfortunately <%=	@guest_coach.name %> is unable to attend your practice on <%=	@practice[:date].strftime('%A %B %d') %>. Sorry for the inconvenience. This practice will be now be open for another coach to join.<br>
+</p>
+
+<p>Thanks again for using CoachSwap</p>
+</body>
+</html>

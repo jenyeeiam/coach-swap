@@ -1,32 +1,49 @@
 <%= render 'layouts/top_nav' %>
-<h1 class="title">Profile Page</h1>
-<p class="subtitle"><%= @coach.name %></p>
-<span><%= image_tag(@coach.avatar.thumb.url) if @coach.avatar_url %></span>
+<div class="columns">
+  <div class="column is-2"></div>
+  <div class="column is-4">
+    <h1 class="title is-2">Profile Page</h1>
+    <p class="subtitle is-4"><%= @coach.name %> - <%=	@coach.team %></p>
+    <span><%= image_tag(@coach.avatar.thumb.url) if @coach.avatar_url %></span>
+  </div>
+</div>
 
 <div class="columns">
   <div class="column is-2"></div>
   <div class="column is-4">
-    <h2 class="subtitle">My Practices</h2>
+    <h2 class="subtitle is-4">My Practices</h2>
     <ul>
       <% @practices.each do |practice| %>
-        <li>
-          <%= practice.time %> <%= practice.street %> <%= practice.city %> <%= practice.date.strftime("%m/%d/%Y") %> <%= link_to("Destroy", "/coaches/#{params[:id]}/practices/#{practice.id}", method: :delete) %> <%= link_to("Edit", "/coaches/#{params[:id]}/practices/#{practice.id}/edit", method: :get) %>
+        <li class="my_practices">
+          <%= practice.time %>
+          <%= practice.street %>
+          <%= practice.city %>
+          <%= practice.date.strftime("%m/%d/%Y") %>
+          <br/>
+          <span class="delete_practice"><%= link_to("Delete", "/coaches/#{params[:id]}/practices/#{practice.id}", method: :delete) %></span>
+          <%= link_to("Edit", "/coaches/#{params[:id]}/practices/#{practice.id}/edit", method: :get) %>
         </li>
       <% end %>
     </ul>
   </div>
   <div class="column is-1"></div>
-  <div class="column is-3">
-    <h2 class="subtitle">Practices I'm attending</h2>
+  <div class="column is-4">
+    <h2 class="subtitle is-4">Practices I'm attending</h2>
     <ul>
       <% if @my_practices %>
         <% @my_practices.each do |practice| %>
+          <% host_coach = Coach.find(practice.coach_id) %>
           <li>
-            <%= practice.time %> <%= practice.street %> <%= practice.city %> <%= practice.date.strftime("%m/%d/%Y") %>
+            <%= practice.time %> <%= practice.team_name %> <br/>
+            <%= practice.street %> <%= practice.city %> <%= practice.date.strftime("%m/%d/%Y") %> <br/>
+            <span class="contact_coach">Contact Coach <%= host_coach.name %>: <%= host_coach.email %></span>
+            <%=	form_tag(coach_practice_path(id: practice.id, coach_id: current_user.id, cancel_rsvp: "cancelled"), {class: "cancel_rsvp", method: :put}) do %>
+              <%= submit_tag "Cancel RSVP", class: "cancel_rsvp" %>
+            <% end %>
           </li>
         <% end %>
       <% end %>
     </ul>
   </div>
-  <div class="column is-2"></div>
+  <div class="column is-1"></div>
 </div>

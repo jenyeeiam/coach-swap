@@ -3,7 +3,10 @@ class CoachesController < ApplicationController
   def show
     @coach = Coach.find(params[:id])
     @practices = @coach.practices.order :date
-    @my_practices = Practice.find_by(guest_coach_id: @coach.id)
+    @my_practices = Practice.where(guest_coach_id: @coach.id).order(:date)
+    if @my_practices.class == Practice
+      @my_practices = [@my_practices]
+    end
   end
 
   def new
