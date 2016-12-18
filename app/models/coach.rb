@@ -1,20 +1,9 @@
 class Coach < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :avatar, AvatarUploader
-  has_secure_password
   has_many :practices
-  has_many :event_recurrences
+  belongs_to :user
 
-  validates :name, presence: true
-  validates :team, presence: true
-  validates :age_group, presence: true
-  validates :state, presence: true
-  validates :email, presence: true
-  validates :phone, presence: true
-  validates :password_digest, presence: true
+  validates :name, :team, :age_group, :state, :email, :phone, :user_id, presence: :true
   validates_processing_of :avatar
   validate :avatar_size_validation
 

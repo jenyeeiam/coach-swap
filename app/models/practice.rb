@@ -3,10 +3,8 @@ require "date"
 
 class Practice < ApplicationRecord
   include PgSearch
-  # include IceCube
-  # serialize :schedule, IceCube::Schedule
 
-  has_one :coach
+  belongs_to :coach
 
   validates :time, :duration, :street, :city, :zipcode, presence: :true
 

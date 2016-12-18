@@ -2,7 +2,8 @@
 <div class="columns">
   <div class="column is-2"></div>
   <div class="column is-4">
-    <h1 class="title is-2">Profile Page</h1>
+    <h1 class="title is-2">Profile Page <span class="edit-profile"><%=	link_to "Edit Profile", edit_coach_path, method: :get %></span></h1>
+
     <p class="subtitle is-4"><%= @coach.name %> - <%=	@coach.team %></p>
     <span><%= image_tag(@coach.avatar.thumb.url) if @coach.avatar_url %></span>
   </div>

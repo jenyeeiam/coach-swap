@@ -18,9 +18,15 @@
 }
 
 .practice-entry {
-  border: 1px solid black;
+  border: 1px solid #eee;
+  border-bottom-style: none;
+  border-radius: 5px;
+  padding: 10px;
   .practice-time {
     margin-right: 15px;
+  }
+  .practice-button {
+    bottom: 75px;
   }
 }
 

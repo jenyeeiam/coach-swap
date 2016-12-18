@@ -6,7 +6,7 @@ class PracticesController < ApplicationController
   end
 
   def index
-    @coach = Coach.find(current_user[:id])
+    @coach = Coach.find(current_coach[:id])
     @my_practices = @coach.practices
     @all_coaches = Coach.all
     # practices + filters
@@ -29,6 +29,7 @@ class PracticesController < ApplicationController
   def update
     practice = Practice.find(params[:id])
     host_coach = Coach.find(practice.coach_id)
+    # if editing my own practice
     if params[:edit_practice]
       practice.update! update_practice_params
       redirect_to "/coaches/#{params[:coach_id]}"
@@ -38,8 +39,9 @@ class PracticesController < ApplicationController
       flash[:notice] = "Sorry you're not able to make this practice. We've notified #{host_coach.name} for you"
       redirect_to coach_practices_path
     else
+      # if joining a practice
       guest_coach = Coach.find(params[:guest_coach_id])
-    practice.guest_coach_id = params[:guest_coach_id]
+      practice.guest_coach_id = params[:guest_coach_id]
 
     if practice.save
       GuestMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
@@ -117,12 +119,12 @@ class PracticesController < ApplicationController
     )
   end
 
-  def events_params(practice)
-    practice.permit(
-      :day_of_week,
-      :end_date
-    )
-  end
+  # def events_params(practice)
+  #   practice.permit(
+  #     :day_of_week,
+  #     :end_date
+  #   )
+  # end
 
   def update_practice_params
     params.require(:practice).permit(

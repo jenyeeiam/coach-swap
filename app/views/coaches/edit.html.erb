@@ -3,7 +3,7 @@
 <div class="columns">
   <div class="column is-one-third"></div>
   <div class="column is-one-third">
-    <h1 class="title is-2">Create a Profile</h1>
+    <h1 class="title is-2">Edit My Profile</h1>
     </br>
     <%= form_for @coach do |f| %>
 
@@ -31,7 +31,7 @@
         <%= f.text_field :phone, :class => "input is-medium", :type => "text", :placeholder => "555-555-5555" %>
         <i class="fa fa-users" aria-hidden="true"></i>
       </p>
-      <%= f.submit("Create Profile", :class => "button is-success is-medium") %>
+      <%= f.submit("Submit", :class => "button is-success is-medium") %>
     <% end %>
   </div>
   <div class="column is-one-third"></div>

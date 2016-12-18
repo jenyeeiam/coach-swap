@@ -15,15 +15,27 @@ class CoachesController < ApplicationController
 
   def create
     @coach = Coach.new(coach_params)
+    @coach.user_id = current_user.id
+    @coach.email = current_user.email
     if @coach.save
-      flash[:notice] = "Thanks for joining!"
-      session[:coach_id] = @coach.id
-      @coach.authenticate(params[:password])
+      flash[:notice] = "Great job on creating a profile! Next step is to join another team's practice or host a practice so other coaches can join."
+      # session[:coach_id] = @coach.id
+      # @coach.authenticate(params[:password])
       redirect_to "/coaches/#{@coach.id}/practices"
     elsif !@coach.valid?
       flash[:notice] = "All fields are required. We strive for a transparent platform for all coaches!"
       render :new
     end
+  end
+
+  def edit
+    @coach = current_coach
+  end
+
+  def update
+    coach = current_coach
+    coach.update! update_coach_params
+    redirect_to "/coaches/#{coach.id}"
   end
 
 
@@ -35,10 +47,18 @@ class CoachesController < ApplicationController
       :team,
       :age_group,
       :state,
-      :email,
-      :phone,
-      :password,
-      :password_confirmation
+      :phone
+    )
+  end
+
+  def update_coach_params
+    params.require(:coach).permit(
+      :avatar,
+      :name,
+      :team,
+      :age_group,
+      :state,
+      :phone
     )
   end
 

@@ -1,15 +1,22 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_coach!
+  before_action :authenticate_user!
 
-  helper_method :current_user, :logged_in?
+  helper_method :check_for_coach, :current_coach
 
-   def current_user
-     @current_user ||= Coach.find_by_id(session[:coach_id]) if session[:coach_id]
+  def check_for_coach
+   if current_user.coach
+     @current_coach = current_user.coach
+     redirect_to "/coaches/#{@current_coach.id}/practices"
+   else
+     redirect_to new_coach_path
    end
+  end
 
-    def logged_in?
-      current_user != nil
-    end
+  def current_coach
+    current_user.coach
+  end
+
+
 
 end

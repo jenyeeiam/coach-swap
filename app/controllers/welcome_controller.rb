@@ -20,12 +20,7 @@ class WelcomeController < ApplicationController
   def show
     @practices = Practice.all
     @current_user = current_user
-    @coach_1 = Coach.find(1)
-    # @schedule = IceCube::Schedule.new(Time.now, :end_time => Time.now + 30*86400) do |s|
-    #   s.add_recurrence_rule IceCube::Rule.daily
-    # end
-
-    @events = EventRecurrence.where(coach_id: 1)
+    check_for_coach
   end
 
 end
