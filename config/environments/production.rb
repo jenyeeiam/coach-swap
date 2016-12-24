@@ -83,6 +83,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => 'coach-swap.herokuapp.com' }
+  Rails.application.routes.default_url_options[:host] = 'coach-swap.herokuapp.com'
+
 end
 
 # ActionMailer::Base.smtp_settings = {
@@ -94,8 +98,6 @@ end
 #   :authentication => :plain,
 # }
 #
-config.action_mailer.default_url_options = { :host => 'coach-swap.herokuapp.com' }
-Rails.application.routes.default_url_options[:host] = 'coach-swap.herokuapp.com'
 
 ActionMailer::Base.smtp_settings = {
   address:              'smtp.gmail.com',
