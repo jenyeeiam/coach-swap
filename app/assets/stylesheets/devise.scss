@@ -1,0 +1,17 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cover-photo {
+  position: relative;
+  .login {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    background-color: rgba(238, 238, 238, 0.44);
+    border-radius: 20px;
+  }
+  .login-form {
+    padding: 20px;
+  }
+}
