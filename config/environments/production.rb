@@ -85,23 +85,23 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 end
 
-ActionMailer::Base.smtp_settings = {
-  :port           => ENV['MAILGUN_SMTP_PORT'],
-  :address        => ENV['MAILGUN_SMTP_SERVER'],
-  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-  :domain         => 'coach-swap.herokuapp.com',
-  :authentication => :plain,
-}
+# ActionMailer::Base.smtp_settings = {
+#   :port           => ENV['MAILGUN_SMTP_PORT'],
+#   :address        => ENV['MAILGUN_SMTP_SERVER'],
+#   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+#   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+#   :domain         => 'coach-swap.herokuapp.com',
+#   :authentication => :plain,
+# }
 #
 # config.action_mailer.delivery_method = :smtp
-# ActionMailer::Base.smtp_settings = {
-#   address:              'smtp.gmail.com',
-#   port:                 587,
-#   domain:               'example.com',
-#   user_name:            ENV['gmail_username'],
-#   password:             ENV['gmail_password'],
-#   authentication:       'plain',
-#   enable_starttls_auto: true  }
+ActionMailer::Base.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            ENV['gmail_username'],
+  password:             ENV['gmail_password'],
+  authentication:       'plain',
+  enable_starttls_auto: true  }
 
 ActionMailer::Base.delivery_method = :smtp
