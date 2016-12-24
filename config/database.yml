@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: 
+  database: coach_swap_production
+  username: jen
+  password: <%= ENV['COACHSWAP_DATABASE_PASSWORD'] %>
