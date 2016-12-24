@@ -34,7 +34,7 @@ class PracticesController < ApplicationController
       practice.update! update_practice_params
       redirect_to "/coaches/#{params[:coach_id]}"
     elsif params[:cancel_rsvp]
-      CancelMailer.cancellation_email(host_coach, practice).deliver_later
+      CancelMailer.cancellation_email(host_coach, practice).deliver
       practice.update! guest_coach_id: nil
       flash[:notice] = "Sorry you're not able to make this practice. We've notified #{host_coach.name} for you"
       redirect_to coach_practices_path
@@ -44,8 +44,8 @@ class PracticesController < ApplicationController
       practice.guest_coach_id = params[:guest_coach_id]
 
     if practice.save
-      GuestMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver_later
-      HostMailer.confirmation_email_host(guest_coach, host_coach, practice).deliver_later
+      GuestMailer.confirmation_email_guest(guest_coach, host_coach, practice).deliver
+      HostMailer.confirmation_email_host(guest_coach, host_coach, practice).deliver
       flash[:notice] = "You just joined a practice! Check your inbox for your confirmation email"
       redirect_to coach_practices_path
     else
