@@ -6,7 +6,7 @@
   <body>
     <h1>Thanks for Swapping, <%= @guest_coach.name %>!</h1>
     <p>
-      You have successfully RSVP'd to join the <%= @practice.team_name %>'s practice<br>
+      You have successfully RSVP'd to join the <%= @practice.team_name %>'s practice on <%= @practice.date.strftime('%A %B %d') %> at <%= @practice.time %>. Thanks so much for being an ambassador for your sport and connecting with other coaches in your area!<br>
     </p>
     <p>
       Make a connection with Coach <%= @host_coach.name %> by sending them an email <%= @host_coach.email %> 

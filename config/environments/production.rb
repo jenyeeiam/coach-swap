@@ -103,4 +103,5 @@ ActionMailer::Base.smtp_settings = {
   password:             ENV['gmail_password'],
   authentication:       'plain',
   enable_starttls_auto: true  }
+
 ActionMailer::Base.delivery_method = :smtp
