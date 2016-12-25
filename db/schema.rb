@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20161215050223) do
 
   create_table "practices", force: :cascade do |t|
     t.integer  "coach_id"
-    t.string   "time"
+    t.time     "time"
     t.string   "duration"
     t.integer  "guest_coach_id"
     t.string   "street"

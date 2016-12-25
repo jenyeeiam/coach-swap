@@ -1,26 +1,30 @@
 <tr class="practice-form">
-  <td>Practice <%= index + 1 %></td>
+
   <td>
-    <span class="select is-medium">
-      <%= select_tag "practices[][day_of_week]", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]) %>
-    </span>
+    <div class="control is-horizontal">
+      <div class="control is-grouped">
+        <%=	f.time_select :time, {ampm: true}, {class: "input is-medium"}  %>
+      </div>
+    </div>
   </td>
+
   <td class="mini-field">
-    <%= text_field_tag "practices[][time]", nil, class: "input is-medium", placeholder: "6:00pm" %>
-  </td>
-  <td class="mini-field">
-    <%= text_field_tag "practices[][duration]", nil, class: "input is-medium", placeholder: "2" %>
+    <%= f.text_field :duration, class: "input is-medium", placeholder: "2" %>
   </td>
   <td class="street-field">
-    <%= text_field_tag "practices[][street]", nil, class: "input is-medium", placeholder: "123 My Street" %>
-  </td>
-  <td>
-    <%= text_field_tag "practices[][city]", nil, class: "input is-medium", placeholder: "Denver" %>
+    <%= f.text_field :street, class: "input is-medium", placeholder: "123 My Street" %>
   </td>
   <td class="mini-field">
-    <%= text_field_tag "practices[][zipcode]", nil, class: "input is-medium", placeholder: "12345" %>
+    <%= f.text_field :city, class: "input is-medium", placeholder: "Denver" %>
+  </td>
+  <td class="mini-field">
+    <%= f.text_field :zipcode, class: "input is-medium", placeholder: "12345" %>
   </td>
   <td>
-    <%= date_field_tag "practices[][end_date]", (Date.today + 7), class: "input is-medium" %>
+    <%= date_field_tag :start_date, "", class: "input is-medium" %>
+  </td>
+  <td>
+    <%= date_field_tag :end_date, "", class: "input is-medium"%>
   </td>
 </tr>
+

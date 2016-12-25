@@ -2,8 +2,8 @@ class CoachesController < ApplicationController
 
   def show
     @coach = Coach.find(params[:id])
-    @practices = @coach.practices.order :date
-    @my_practices = Practice.where(guest_coach_id: @coach.id).order(:date)
+    @practices = @coach.practices.where("date >= ?", Date.today).order(:date)
+    @my_practices = Practice.where("guest_coach_id = ? AND date >= ?", @coach.id, Date.today).order(:date)
     if @my_practices.class == Practice
       @my_practices = [@my_practices]
     end
@@ -19,8 +19,6 @@ class CoachesController < ApplicationController
     @coach.email = current_user.email
     if @coach.save
       flash[:notice] = "Great job on creating a profile! Next step is to join another team's practice or host a practice so other coaches can join."
-      # session[:coach_id] = @coach.id
-      # @coach.authenticate(params[:password])
       redirect_to "/coaches/#{@coach.id}/practices"
     elsif !@coach.valid?
       flash[:notice] = "All fields are required. We strive for a transparent platform for all coaches!"

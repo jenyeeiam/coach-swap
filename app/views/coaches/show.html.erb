@@ -15,7 +15,7 @@
     <ul>
       <% @practices.each do |practice| %>
         <li class="my_practices">
-          <%= practice.time %>
+          <%= practice.time.strftime("%l:%M %P") %>
           <%= practice.street %>
           <%= practice.city %>
           <%= practice.date.strftime("%m/%d/%Y") %>
@@ -34,7 +34,7 @@
         <% @my_practices.each do |practice| %>
           <% host_coach = Coach.find(practice.coach_id) %>
           <li>
-            <%= practice.time %> <%= practice.team_name %> <br/>
+            <%= practice.time.strftime("%l:%M %P") %> <%= practice.team_name %> <br/>
             <%= practice.street %> <%= practice.city %> <%= practice.date.strftime("%m/%d/%Y") %> <br/>
             <span class="contact_coach">Contact Coach <%= host_coach.name %>: <%= host_coach.email %></span>
             <%=	form_tag(coach_practice_path(id: practice.id, coach_id: current_user.id, cancel_rsvp: "cancelled"), {class: "cancel_rsvp", method: :put}) do %>

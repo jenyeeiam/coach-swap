@@ -3,7 +3,7 @@
   <li class="practice-entry">
 
     <div class="practice-time is-inline-flex">
-      <%= practice.time %>
+      <%= practice.time.strftime("%l:%M %P") %>
     </div>
     <div class="is-inline-flex">
       <strong><%= coach.team %> <%= practice.age_group %></strong>

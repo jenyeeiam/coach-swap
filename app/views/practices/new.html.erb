@@ -15,7 +15,7 @@
           <th>Street</th>
           <th>City</th>
           <th>Zipcode</th>
-          <th>Start Date</th>
+          <th>Date</th>
           <th>
             <a class="tooltips">End Date
               <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -26,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render 'practice_form_2', f: f %>
+        <%= render 'practice_form', f: f %>
         <td colspan="3"><%=	f.submit "Submit", class: "button is-success" %> <%= f.submit "Submit and add practice", name: "add_practice", class: "add_practice button is-success" %> <span class="back_link"><%= link_to "Back", coach_practices_path %></span></td>
 
 

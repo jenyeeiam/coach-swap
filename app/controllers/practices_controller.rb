@@ -11,13 +11,17 @@ class PracticesController < ApplicationController
     @all_coaches = Coach.all
     # practices + filters
     @practices = Practice.all
-    @practices = @practices.filter_by_age_group(params[:age_group]) if search_params[:age_group]
-    @practices = @practices.filter_by_city(params[:city]) if search_params[:city]
-    @practices = @practices.filter_by_zipcode(params[:zipcode]) if search_params[:zipcode]
-    @practices = @practices.filter_by_state(params[:state]) if search_params[:state]
-    if @practices.blank? || @practices.empty?
-      flash[:error] = 'Sorry no practices found'
-      redirect_to coach_practices_path
+    if @practices.empty?
+
+    else
+      @practices = @practices.filter_by_age_group(params[:age_group]) if search_params[:age_group]
+      @practices = @practices.filter_by_city(params[:city]) if search_params[:city]
+      @practices = @practices.filter_by_zipcode(params[:zipcode]) if search_params[:zipcode]
+      @practices = @practices.filter_by_state(params[:state]) if search_params[:state]
+      if @practices.blank? || @practices.empty?
+        flash[:error] = 'Sorry no practices found. Be the first to host a practice in your area!'
+        redirect_to coach_practices_path
+      end
     end
   end
 
@@ -75,7 +79,6 @@ class PracticesController < ApplicationController
         redirect_to "/coaches/#{@coach.id}/practices"
       else
         flash[:notice] = "All fields are required."
-        byebug
         render :new
       end
     else
