@@ -1,42 +1,52 @@
+<div class="columns">
+  <div class="column is-1"></div>
+  <div class="column">
+    <h1 class="title">Edit Practice <span class="back_link"><%= link_to "Back", coach_practices_path %></span></h1>
 
-<h1 class="title">Edit Practice</h1>
+    <%=	form_for [@coach, @practice] do |f| %>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Start Time</th>
+          <th>Duration (hrs)</th>
+          <th>Street</th>
+          <th>City</th>
+          <th>Zipcode</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="practice-form">
+            <td>
+              <div class="control is-horizontal">
+                <div class="control is-grouped">
+                  <%=	f.time_select :time, {ampm: true}, {class: "input is-medium"}  %>
+                </div>
+              </div>
+            </td>
+            <td class="mini-field">
+              <%= f.text_field :duration, class: "input is-medium", placeholder: "2" %>
+            </td>
+            <td class="street-field">
+              <%= f.text_field :street, class: "input is-medium", placeholder: "123 My Street" %>
+            </td>
+            <td class="mini-field">
+              <%= f.text_field :city, class: "input is-medium", placeholder: "Denver" %>
+            </td>
+            <td class="mini-field">
+              <%= f.text_field :zipcode, class: "input is-medium", placeholder: "12345" %>
+            </td>
+            <td>
+              <%= f.date_field :date, class: "input is-medium" %>
+            </td>
+            <td>
+              <%=	f.submit "Submit", name: "edit_practice", class: "button is-success" %>
+            </td>
+          </tr>
 
-<%=	form_for [@coach, @practice] do |f| %>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Start Time</th>
-    <th>Duration (hrs)</th>
-    <th>Street</th>
-    <th>City</th>
-    <th>Zipcode</th>
-    <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr class="practice-form">
-      <td class="mini-field">
-        <%= f.text_field :time, class: "input is-medium", placeholder: "6:00pm" %>
-      </td>
-      <td class="mini-field">
-        <%= f.text_field :duration, class: "input is-medium", placeholder: "2" %>
-      </td>
-      <td class="street-field">
-        <%= f.text_field :street, class: "input is-medium", placeholder: "123 My Street" %>
-      </td>
-      <td class="mini-field">
-        <%= f.text_field :city, class: "input is-medium", placeholder: "Denver" %>
-      </td>
-      <td class="mini-field">
-        <%= f.text_field :zipcode, class: "input is-medium", placeholder: "12345" %>
-      </td>
-      <td>
-        <%= f.date_field :date, class: "input is-medium" %>
-      </td>
-      <td>
-        <%=	f.submit "Submit", name: "edit_practice", class: "button is-success" %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+  <div class="column is-1"></div>
+</div>
