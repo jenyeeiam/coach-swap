@@ -5,6 +5,7 @@
     <div class="filter-box">
       <h4 class="title is-4">Search By:</h4>
       <form id="filters-form" method="get">
+        <%= render partial: 'date_select_field' %>
         <%= render partial: 'select_field',
                    locals: {name: 'age_group',
                             options: unique_fields(Practice, :age_group),
@@ -23,21 +24,18 @@
     </div>
   </div>
 
-
   <div class="column is-4">
-    <% i = 0 %>
     <% date = Date.today %>
-    <% 7.times do |i| %>
-      <% counter = 0 + i %>
-      <% if @practices.any? {|a| a.date == date + counter} %>
+    <% @dates.each do |date| %>
+      <% if @practices.any? { |prac| prac.date == date[:date] } %>
         <article class="message">
           <div class="message-header has-text-centered">
-            <%= date_calculator(date + counter) %>
+            <%= date[:date].strftime('%A %B %d') %>
           </div>
           <div class="message-body practice-list">
             <ul>
               <% @practices.each do |practice| %>
-                <%= render 'practice', practice: practice, date: (date + counter), coaches: @all_coaches %>
+                <%= render 'practice', practice: practice, date: date[:date], coaches: @all_coaches %>
               <% end %>
             </ul>
           </div>
@@ -46,10 +44,4 @@
       <% end %>
     <% end %>
 
-
-
-
-
-
-  </div>
 </div>

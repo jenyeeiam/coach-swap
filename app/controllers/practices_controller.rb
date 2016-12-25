@@ -1,16 +1,14 @@
 class PracticesController < ApplicationController
-  helper_method :date_calculator
-
-  def date_calculator(day)
-    @date = day.strftime('%A %B %d')
-  end
 
   def index
+    @date = Date.today
     @coach = Coach.find(current_coach[:id])
     @my_practices = @coach.practices
     @all_coaches = Coach.all
     # practices + filters
-    @practices = Practice.all
+    @practices = Practice.where("date > ?", @date)
+    @dates = @practices.select("date").distinct.order("date")
+    @number_of_dates = @dates.length
     if @practices.empty?
 
     else
@@ -18,6 +16,7 @@ class PracticesController < ApplicationController
       @practices = @practices.filter_by_city(params[:city]) if search_params[:city]
       @practices = @practices.filter_by_zipcode(params[:zipcode]) if search_params[:zipcode]
       @practices = @practices.filter_by_state(params[:state]) if search_params[:state]
+      @practices = @practices.filter_by_date(params[:date]) if search_params[:date]
       if @practices.blank? || @practices.empty?
         flash[:error] = 'Sorry no practices found. Be the first to host a practice in your area!'
         redirect_to coach_practices_path
@@ -122,13 +121,6 @@ class PracticesController < ApplicationController
     )
   end
 
-  # def events_params(practice)
-  #   practice.permit(
-  #     :day_of_week,
-  #     :end_date
-  #   )
-  # end
-
   def update_practice_params
     params.require(:practice).permit(
       :time,
@@ -141,7 +133,7 @@ class PracticesController < ApplicationController
   end
 
   def search_params
-    params.permit(:age_group, :city, :zipcode, :state).transform_values do |value|
+    params.permit(:age_group, :city, :zipcode, :state, :date).transform_values do |value|
       value.empty? ? nil : value
     end
   end

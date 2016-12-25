@@ -1,4 +1,4 @@
-require "recurrence"
+# require "recurrence"
 require "date"
 
 class Practice < ApplicationRecord
@@ -25,11 +25,15 @@ class Practice < ApplicationRecord
     where(state: state)
   }
 
+  scope :filter_by_date, -> (date) {
+    where(date: date)
+  }
 
-  def dates(options={})
-    options = {:on => day_of_week.downcase, :starts => Date.today, :until => end_date}.merge(options)
-    Recurrence.weekly(options).events
-  end
+
+  # def dates(options={})
+  #   options = {:on => day_of_week.downcase, :starts => Date.today, :until => end_date}.merge(options)
+  #   Recurrence.weekly(options).events
+  # end
 
 
 end
