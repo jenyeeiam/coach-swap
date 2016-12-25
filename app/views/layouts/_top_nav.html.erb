@@ -1,4 +1,4 @@
-<nav class="nav nav-bar">
+<nav class="nav nav-bar main-nav">
   <div class="nav-left">
     <a class="nav-item is-brand">
       <%= link_to "Coach Swap", root_path, :class => "title is-1" %>
@@ -6,16 +6,13 @@
   </div>
 
   <div class="nav-right nav-menu">
+    <% if user_signed_in? %>
     <% if current_coach %>
       <%= link_to "View Practices", "/coaches/#{current_coach.id}/practices/", class: "nav-item"  %>
       <%= link_to "Add Practice", "/coaches/#{current_coach.id}/practices/new", :class => "nav-item" %>
       <%=	link_to "My Profile", "/coaches/#{current_coach.id}", class: "nav-item" %>
-    <% end %>
     <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "nav-item" %>
+  <% end %>
+  <% end %>
 
 </nav>
-<div class="notification">
-  <% flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, class: name %>
-  <% end -%>
-</div>

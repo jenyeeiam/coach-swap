@@ -13,9 +13,15 @@
   </head>
 
   <body>
-
-
+    <%= render 'layouts/top_nav' %>
     <main>
+      <% if flash.any? %>
+        <div class="notification">
+          <% flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, class: name %>
+          <% end -%>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

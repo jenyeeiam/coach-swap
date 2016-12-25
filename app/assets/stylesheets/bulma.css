@@ -147,10 +147,11 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.428571428571429;
+  position: relative;
 }
 
 a {
-  color: #00d1b2;
+  color: #8C75FF;
   cursor: pointer;
   text-decoration: none;
   -webkit-transition: none 86ms ease-out;
@@ -2053,10 +2054,14 @@ a.box:active {
 }
 
 .notification {
-  /*background-color: whitesmoke;*/
+  /*background-color: rgba(127, 255, 212, 0.17);*/
+  z-index: 2;
+  color: #8C75FF;
   border-radius: 3px;
   padding: 16px 20px;
-  position: relative;
+  position: absolute;
+  top: 69px;
+  width: 50%;
 }
 
 .notification:not(:last-child) {
