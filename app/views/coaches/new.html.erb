@@ -6,7 +6,9 @@
     </br>
     <%= form_for @coach do |f| %>
 
-      <%= f.file_field(:avatar) %>
+      <span style="font-size: .75em">Profile Picture</span>
+      </br>
+      <%= f.file_field :avatar %>
       <p class="control has-icon">
         <%= f.text_field :name, :class => "input is-medium", :type => "text", :placeholder => "Name" %>
         <i class="fa fa-user" aria-hidden="true"></i>

@@ -6,7 +6,7 @@
     <h1 class="title is-2">My Practice Schedule</h1>
     <h4 class="title is-4">Create a practice schedule for your team</h4>
     </br>
-    <%=	form_for [@coach, @practice] do |f| %>
+    <%=	form_for [@coach, @coach.practices.new] do |f| %>
     <table class="table">
       <thead>
         <tr>

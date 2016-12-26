@@ -24,9 +24,61 @@ class PracticesController < ApplicationController
     end
   end
 
+  def new
+    @coach = Coach.find(params[:coach_id])
+    @practice = @coach.practices.new
+  end
+
   def edit
     @coach = Coach.find(params[:coach_id])
     @practice = Practice.find(params[:id])
+  end
+
+  def create
+    @coach = Coach.find(params[:coach_id])
+    if params["end_date"].blank?
+      @practice = @coach.practices.new practice_params(params[:practice])
+      @practice.date = params[:start_date].to_date
+      @practice.team_name = @coach[:team]
+      @practice.state = @coach[:state]
+      @practice.age_group = @coach.age_group
+      if @practice.save && params[:add_practice]
+        flash[:notice] = "Great work. Add another practice!"
+        render :new
+      elsif @practice.save
+        redirect_to "/coaches/#{@coach.id}/practices"
+      else
+        flash[:notice] = "All fields are required."
+        render :new
+      end
+    else
+      if params[:start_date] > params[:end_date]
+        flash[:notice] = "End date must be after the first practice date"
+        render :new and return
+      else
+        date_range = (params[:start_date].to_date)..(params[:end_date].to_date)
+        practice_dates = date_range.select {|d| [params[:start_date].to_date.strftime("%u").to_i].include?(d.wday)}
+        practice_dates.each do |date|
+          @practice = @coach.practices.new practice_params(params[:practice])
+          @practice.date = date
+          @practice.team_name = @coach[:team]
+          @practice.state = @coach[:state]
+          @practice.age_group = @coach.age_group
+          if !@practice.valid?
+            flash[:notice] = "Something's terribly wrong"
+            render :new
+          end
+          @practice.save
+        end
+      end
+      if params[:add_practice]
+        flash[:notice] = "Great work! Add another practice!"
+        render :new
+      else
+        redirect_to "/coaches/#{@coach.id}/practices"
+      end
+    end
+
   end
 
   def update
@@ -56,53 +108,6 @@ class PracticesController < ApplicationController
     end
 
     end
-  end
-
-  def new
-    @coach = Coach.find(params[:coach_id])
-    @practice = @coach.practices.new
-  end
-
-  def create
-    @coach = Coach.find(params[:coach_id])
-    if params["end_date"].blank?
-      @practice = @coach.practices.new practice_params(params[:practice])
-      @practice.date = params[:start_date].to_date
-      @practice.team_name = @coach[:team]
-      @practice.state = @coach[:state]
-      @practice.age_group = @coach.age_group
-      if @practice.save && params[:add_practice]
-        flash[:notice] = "Great work. Add another practice!"
-        render :new
-      elsif @practice.save
-        redirect_to "/coaches/#{@coach.id}/practices"
-      else
-        flash[:notice] = "All fields are required."
-        render :new
-      end
-    else
-      date_range = (params[:start_date].to_date)..(params[:end_date].to_date)
-      practice_dates = date_range.select {|d| [params[:start_date].to_date.strftime("%u").to_i].include?(d.wday)}
-      practice_dates.each do |date|
-        @practice = @coach.practices.new practice_params(params[:practice])
-        @practice.date = date
-        @practice.team_name = @coach[:team]
-        @practice.state = @coach[:state]
-        @practice.age_group = @coach.age_group
-        if !@practice.valid?
-          flash[:notice] = "Something's terribly wrong"
-          render :new_coach_practice_path
-        end
-        @practice.save
-      end
-      if params[:add_practice]
-        flash[:notice] = "Great work! Add another practice!"
-        render :new
-      else
-        redirect_to "/coaches/#{@coach.id}/practices"
-      end
-    end
-
   end
 
   def destroy
