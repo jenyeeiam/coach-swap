@@ -619,10 +619,11 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.428571428571429;
+  position: relative;
 }
 
 a {
-  color: #00d1b2;
+  color: #8C75FF;
   cursor: pointer;
   text-decoration: none;
   -webkit-transition: none 86ms ease-out;
@@ -2525,10 +2526,14 @@ a.box:active {
 }
 
 .notification {
-  /*background-color: whitesmoke;*/
+  /*background-color: rgba(127, 255, 212, 0.17);*/
+  z-index: 2;
+  color: #8C75FF;
   border-radius: 3px;
   padding: 16px 20px;
-  position: relative;
+  position: absolute;
+  top: 69px;
+  width: 50%;
 }
 
 .notification:not(:last-child) {
@@ -7039,7 +7044,7 @@ a.panel-block:hover {
   background: none !important;
   border: none;
   padding: 0 !important;
-  color: #00d1b2;
+  color: #8C75FF;
   font-size: inherit;
   cursor: pointer;
 }
@@ -7051,18 +7056,24 @@ a.panel-block:hover {
 /* line 5, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/devise.scss */
 .cover-photo {
   position: relative;
+  top: -61px;
 }
-/* line 7, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/devise.scss */
+/* line 8, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/devise.scss */
 .cover-photo .login {
   position: absolute;
   top: 100px;
   left: 100px;
-  background-color: rgba(238, 238, 238, 0.44);
+  background-color: rgba(238, 238, 238, 0.75);
   border-radius: 20px;
 }
-/* line 14, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/devise.scss */
+/* line 15, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/devise.scss */
 .cover-photo .login-form {
   padding: 20px;
+}
+
+/* line 21, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/devise.scss */
+.field #user_email, .field #user_password, .field #user_password_confirmation {
+  width: 245px;
 }
 /* line 5, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 .practice-date {
@@ -7099,27 +7110,21 @@ a.panel-block:hover {
 }
 
 /* line 33, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
-.practice-entry:hover {
-  cursor: pointer;
-  cursor: hand;
-}
-
-/* line 38, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 .filter-box {
   background-color: #eee;
   border-radius: 6px;
   padding: 40px;
-  height: 500px;
+  height: 600px;
 }
 
-/* line 45, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
+/* line 40, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 a.tooltips {
   position: relative;
   display: inline;
   color: #7a7a7a;
 }
 
-/* line 50, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
+/* line 45, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 a.tooltips span {
   position: absolute;
   width: 400px;
@@ -7135,7 +7140,7 @@ a.tooltips span {
   padding: 8px;
 }
 
-/* line 64, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
+/* line 59, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 a.tooltips span:after {
   content: '';
   position: absolute;
@@ -7149,7 +7154,7 @@ a.tooltips span:after {
   border-left: 8px solid transparent;
 }
 
-/* line 75, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
+/* line 70, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 a:hover.tooltips span {
   visibility: visible;
   opacity: 0.8;
@@ -7159,22 +7164,28 @@ a:hover.tooltips span {
   z-index: 999;
 }
 
-/* line 84, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
+/* line 79, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 .mini-field {
   width: 125px;
 }
 
-/* line 88, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
+/* line 83, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 .practice-form-main {
   margin: 25px;
 }
 
-/* line 92, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
+/* line 87, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/practices.scss */
 .back_link {
   margin-left: 15px;
   font-size: 18px;
 }
-/* line 6, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 4, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+.main-nav {
+  margin-bottom: 61px;
+  height: 75px;
+}
+
+/* line 9, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .hero {
   background: url("http://i.imgur.com/XHY685T.png") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -7183,47 +7194,47 @@ a:hover.tooltips span {
   background-size: cover;
 }
 
-/* line 14, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 17, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .hero-head {
   margin-right: 10px;
   margin-top: 10px;
 }
 
-/* line 19, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 22, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .main-welcome {
   margin-right: 30px;
 }
 
-/* line 23, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 26, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .coach-title {
   color: #99c0ff;
   font-size: 2em;
 }
 
-/* line 28, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 31, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .swap-title {
   color: white;
   font-size: 2em;
 }
 
-/* line 33, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 36, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .tagline {
   color: black;
 }
 
-/* line 37, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 40, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .grow a, p, p.title {
   color: #656F7D;
 }
 
-/* line 41, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 44, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .grow:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
   background-color: #B1B5BA;
 }
-/* line 47, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
+/* line 50, /home/jen/lighthouse/coach_swap/app/assets/stylesheets/welcome.scss */
 .grow:hover p {
   color: white;
 }
